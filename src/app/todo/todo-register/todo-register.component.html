@@ -1,0 +1,27 @@
+<div class="container" fxLayout="row" fxLayoutAlign="center center">
+  <div class="shot">
+    <div class="views" [@viewsContainerflyInOutAnimation]="viewsContainerflyInOutAnimationState"
+                       (@viewsContainerflyInOutAnimation.done)="onViewsContainerflyInOutAnimationDone($event)">
+      <img class="default" src="../assets/2do/register/default.png" alt="default"
+           [@defaultViewFadeOutAnimation]="defaultViewFadeOutAnimationState"
+           (@defaultViewFadeOutAnimation.done)="onDefaultViewFadeOutAnimationDone($event)">
+      <img class="hover" src="../assets/2do/register/hover.png" alt="hover"
+           [@hoverViewFadeOutAnimation]="hoverViewFadeOutAnimationState"
+           (@hoverViewFadeOutAnimation.done)="onHoverViewFadeOutAnimationDone($event)">
+      <img class="active" src="../assets/2do/register/active.png" alt="active">
+    </div>
+
+    <div class="background">
+      <div class="left-panel" [fxFlex]="backgroundLeftPanelWidth"></div>
+      <div class="right-panel" fxFlex></div>
+    </div>
+
+    <button mat-fab
+            [matTooltip]="startAnimationBtnTooltipText"
+            [matTooltipPosition]="startAnimationBtnTooltpPosition"
+            [disabled]="(startAnimationBtnState === 'enabled') ? false : true"
+            (click)="triggerAnimation()">
+      <mat-icon>{{ startAnimationBtnIcon }}</mat-icon>
+    </button>
+  </div>
+</div>
