@@ -1,26 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { trigger, state, style, animate, transition } from '@angular/animations';
+import { viewsContainerflyInOutAnimation, defaultViewFadeOutAnimation, hoverViewFadeOutAnimation } from './todo-register.animations';
 
 @Component({
   selector: 'app-todo-register',
   templateUrl: './todo-register.component.html',
   styleUrls: ['./todo-register.component.scss'],
   animations: [
-    trigger('viewsContainerflyInOutAnimation', [
-      state('void', style({ left: '800px' })),
-      state('fly-in', style({ left: '56px' })),
-      state('fly-out', style({ left: '-800px' })),
-      transition('void => fly-in', [ animate('250ms cubic-bezier(0.0, 0.0, 0.2, 1)') ]),
-      transition('fly-in => fly-out', [ animate('350ms cubic-bezier(0.4, 0.0, 1, 1)') ])
-    ]),
-    trigger('defaultViewFadeOutAnimation', [
-      state('fade-out', style({ opacity: '0' })),
-      transition('void => fade-out', [ animate('350ms cubic-bezier(0.0, 0.0, 0.2, 1)') ]),
-    ]),
-    trigger('hoverViewFadeOutAnimation', [
-      state('fade-out', style({ opacity: '0' })),
-      transition('void => fade-out', [ animate('350ms cubic-bezier(0.0, 0.0, 0.2, 1)') ]),
-    ])
+    viewsContainerflyInOutAnimation(),
+    defaultViewFadeOutAnimation(),
+    hoverViewFadeOutAnimation()
   ]
 })
 export class TodoRegisterComponent implements OnInit {
