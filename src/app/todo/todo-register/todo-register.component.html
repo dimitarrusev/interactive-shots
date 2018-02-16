@@ -1,7 +1,7 @@
 <div class="container" fxLayout="row" fxLayoutAlign="center center">
   <div class="shot">
-    <div class="views" [@viewsContainerflyInOutAnimation]="viewsContainerflyInOutAnimationState"
-                       (@viewsContainerflyInOutAnimation.done)="onViewsContainerflyInOutAnimationDone($event)">
+    <div class="views" [@viewsContainerSlideInOutAnimation]="viewsContainerSlideInOutAnimationState"
+                       (@viewsContainerSlideInOutAnimation.done)="onViewsContainerSlideInOutAnimationDone($event)">
       <img class="default" src="../assets/2do/register/default.png" alt="default"
            [@defaultViewFadeOutAnimation]="defaultViewFadeOutAnimationState"
            (@defaultViewFadeOutAnimation.done)="onDefaultViewFadeOutAnimationDone($event)">

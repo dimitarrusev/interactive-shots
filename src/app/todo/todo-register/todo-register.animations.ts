@@ -7,13 +7,13 @@ const easingCurves = {
   sharp: 'cubic-bezier(0.4, 0.0, 0.6, 1)'
 };
 
-const viewsContainerflyInOutAnimation = () => {
-  return trigger('viewsContainerflyInOutAnimation', [
+const viewsContainerSlideInOutAnimation = () => {
+  return trigger('viewsContainerSlideInOutAnimation', [
     state('void', style({ left: '800px' })),
-    state('fly-in', style({ left: '56px' })),
-    state('fly-out', style({ left: '-800px' })),
-    transition('void => fly-in', [ animate(`250ms ${ easingCurves.deceleration }`) ]),
-    transition('fly-in => fly-out', [ animate(`350ms ${ easingCurves.acceleration }`) ])
+    state('slide-in', style({ left: '56px' })),
+    state('slide-out', style({ left: '-800px' })),
+    transition('void => slide-in', [ animate(`250ms ${ easingCurves.deceleration }`) ]),
+    transition('slide-in => slide-out', [ animate(`350ms ${ easingCurves.acceleration }`) ])
   ]);
 };
 
@@ -32,7 +32,7 @@ const hoverViewFadeOutAnimation = () => {
 };
 
 export {
-  viewsContainerflyInOutAnimation,
+  viewsContainerSlideInOutAnimation,
   defaultViewFadeOutAnimation,
   hoverViewFadeOutAnimation
 };
