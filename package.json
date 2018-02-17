@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod",
+    "build": "ng build --no-aot --prod --base-href 'https://dimitarrusev.com/interactive-shots/' --deploy-url 'https://dimitarrusev.com/interactive-shots/'",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
