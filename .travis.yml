@@ -2,15 +2,11 @@ language: node_js
 node_js:
   - "8.2.1"
 
-breanches:
-  only:
-    - master
-
 script:
   - npm run build
 
 after_success:
-  - npm run deploy
+  - test $TRAVIS_BRANCH = "master" && test $TRAVIS_PULL_REQUEST = "false" && npm run deploy
 
 notifications:
   - email:
