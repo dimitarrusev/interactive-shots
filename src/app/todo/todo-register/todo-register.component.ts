@@ -1,22 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { viewsContainerSlideInOutAnimation, defaultViewFadeOutAnimation, hoverViewFadeOutAnimation } from './todo-register.animations';
+import { animation } from './todo-register.animations';
 
 @Component({
   selector: 'app-todo-register',
   templateUrl: './todo-register.component.html',
   styleUrls: ['./todo-register.component.scss'],
   animations: [
-    viewsContainerSlideInOutAnimation(),
-    defaultViewFadeOutAnimation(),
-    hoverViewFadeOutAnimation()
+    animation()
   ]
 })
 export class TodoRegisterComponent implements OnInit {
   initAnimation: boolean = false;
   backgroundLeftPanelWidth: number = 0;
-  viewsContainerSlideInOutAnimationState: 'void' | 'slide-in' | 'slide-out' = 'void';
-  defaultViewFadeOutAnimationState: 'void' | 'fade-out' = 'void';
-  hoverViewFadeOutAnimationState: 'void' | 'fade-out' = 'void';
+  animationState: 'void' | 'play' = 'void';
   startAnimationBtnState: 'enabled' | 'disabled' = 'enabled';
   startAnimationBtnIcon: 'play_arrow' | 'replay' = 'play_arrow';
   startAnimationBtnTooltipText: 'play' | 'replay' = 'play';
@@ -29,44 +25,21 @@ export class TodoRegisterComponent implements OnInit {
   triggerAnimation() {
     this.initAnimation = true;
     this.backgroundLeftPanelWidth = 42;
-    this.viewsContainerSlideInOutAnimationState = 'slide-in';
+    this.animationState = 'play';
     this.startAnimationBtnState = 'disabled';
     this.startAnimationBtnIcon = (!this.initAnimation) ? 'play_arrow' : 'replay';
   }
 
   resetAnimationState() {
     this.backgroundLeftPanelWidth = 0;
-    this.viewsContainerSlideInOutAnimationState = 'void';
-    this.defaultViewFadeOutAnimationState = 'void';
-    this.hoverViewFadeOutAnimationState = 'void';
+    this.animationState = 'void';
     this.startAnimationBtnState = 'enabled';
     this.startAnimationBtnTooltipText = 'replay';
   }
 
-  onViewsContainerSlideInOutAnimationDone(evt) {
-    if (evt.fromState === 'void' && evt.toState === 'slide-in') {
-      setTimeout(() => {
-        this.defaultViewFadeOutAnimationState = 'fade-out';
-      }, 1500);
-    } else if (evt.fromState === 'slide-in' && evt.toState === 'slide-out') {
+  onAnimationDone(evt) {
+    if (evt.fromState === 'void' && evt.toState === 'play') {
       this.resetAnimationState();
-    }
-  }
-
-  onDefaultViewFadeOutAnimationDone(evt) {
-    if (evt.fromState === 'void' && evt.toState === 'fade-out') {
-      setTimeout(() => {
-        this.hoverViewFadeOutAnimationState = 'fade-out';
-      }, 2000);
-    }
-  }
-
-  onHoverViewFadeOutAnimationDone(evt) {
-    if (evt.fromState === 'void' && evt.toState === 'fade-out') {
-      setTimeout(() => {
-        this.backgroundLeftPanelWidth = 0;
-        this.viewsContainerSlideInOutAnimationState = 'slide-out';
-      }, 2000);
     }
   }
 }

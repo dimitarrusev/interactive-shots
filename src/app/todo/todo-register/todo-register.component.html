@@ -1,14 +1,9 @@
 <div class="container" fxLayout="row" fxLayoutAlign="center center">
   <div class="frame">
     <div class="shot">
-      <div class="views" [@viewsContainerSlideInOutAnimation]="viewsContainerSlideInOutAnimationState"
-                         (@viewsContainerSlideInOutAnimation.done)="onViewsContainerSlideInOutAnimationDone($event)">
-        <img class="default" src="assets/2do/register/default.png" alt="default"
-             [@defaultViewFadeOutAnimation]="defaultViewFadeOutAnimationState"
-             (@defaultViewFadeOutAnimation.done)="onDefaultViewFadeOutAnimationDone($event)">
-        <img class="hover" src="assets/2do/register/hover.png" alt="hover"
-             [@hoverViewFadeOutAnimation]="hoverViewFadeOutAnimationState"
-             (@hoverViewFadeOutAnimation.done)="onHoverViewFadeOutAnimationDone($event)">
+      <div class="views" [@animation]="animationState" (@animation.done)="onAnimationDone($event)">
+        <img class="default" src="assets/2do/register/default.png" alt="default">
+        <img class="hover" src="assets/2do/register/hover.png" alt="hover">
         <img class="active" src="assets/2do/register/active.png" alt="active">
       </div>
 

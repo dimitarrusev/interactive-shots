@@ -1,4 +1,4 @@
-import { trigger, state, style, animate, transition, useAnimation } from '@angular/animations';
+import { trigger, state, style, stagger, animate, animateChild, query, transition, useAnimation } from '@angular/animations';
 import { generateSlideAnimation, fadeAnimation } from '../../shared/utils/animations';
 
 // Easing curves
@@ -10,90 +10,46 @@ const sharpEasingCurve = 'cubic-bezier(0.4, 0.0, 0.6, 1)';
 // Animation parameters
 // slideInAnimation
 const slideInAnimationAnimateProperty = 'left';
-const slideInAnimationAnimatePropertyFrom = '800px';
-const slideInAnimationAnimatePropertyTo = '56px';
-const slideInAnimationDuration = '250ms';
-const slideInAnimationEasing = decelerationEasingCurve;
 const slideInAnimation = generateSlideAnimation(slideInAnimationAnimateProperty);
+const slideInAnimationParams = {
+  from: '800px',
+  to: '56px',
+  duration: '350ms',
+  easing: decelerationEasingCurve
+};
 
 // slideOutAnimation
 const slideOutAnimationAnimateProperty = 'left';
-const slideOutAnimationAnimatePropertyFrom = '56px';
-const slideOutAnimationAnimatePropertyTo = '-800px';
-const slideOutAnimationDuration = '350ms';
-const slideOutAnimationEasing = accelerationEasingCurve;
 const slideOutAnimation = generateSlideAnimation(slideOutAnimationAnimateProperty);
+const slideOutAnimationParams = {
+  from: '56px',
+  to: '-800px',
+  duration: '350ms',
+  easing: accelerationEasingCurve
+};
 
 // fadeOutAnimation
-const fadeOutAnimationFrom = 1;
-const fadeOutAnimationTo = 0;
-const fadeOutAnimationDuration = '350ms';
-const fadeOutAnimationEasing = decelerationEasingCurve;
 const fadeOutAnimation = fadeAnimation;
+const fadeOutAnimationParams = {
+  from: 1,
+  to: 0,
+  duration: '350ms',
+  easing: decelerationEasingCurve
+};
+
+
+// Animation delays (in ms)
+const defaultViewFadeOutAnimationDelay = 1500;
+const hoverViewFadeOutAnimationDelay = 2000;
+const viewsContainerSlideOutAnimationDelay = 2000;
 
 // Animations
-const viewsContainerSlideInOutAnimation = () => {
-  return trigger('viewsContainerSlideInOutAnimation', [
-    state('void', style({
-      [slideInAnimationAnimateProperty]: slideInAnimationAnimatePropertyFrom
-    })),
-    transition('void => slide-in', [
-      useAnimation(slideInAnimation, {
-        params: {
-          from: slideInAnimationAnimatePropertyFrom,
-          to: slideInAnimationAnimatePropertyTo,
-          duration: slideInAnimationDuration,
-          easing: slideInAnimationEasing
-        }
-      }),
-    ]),
-    transition('slide-in => slide-out', [
-      useAnimation(slideOutAnimation, {
-        params: {
-          from: slideOutAnimationAnimatePropertyFrom,
-          to: slideOutAnimationAnimatePropertyTo,
-          duration: slideOutAnimationDuration,
-          easing: slideOutAnimationEasing
-        }
-      }),
-    ]),
+export const animation = () => {
+  return trigger('animation', [
+    transition('void => play', [
+      useAnimation(slideInAnimation, { params: slideInAnimationParams }),
+      query('img.default, img.hover', stagger(hoverViewFadeOutAnimationDelay, [ useAnimation(fadeOutAnimation, { params: fadeOutAnimationParams }) ]), { delay: defaultViewFadeOutAnimationDelay }),
+      query(':self', [ useAnimation(slideOutAnimation, { params: slideOutAnimationParams }) ], { delay: viewsContainerSlideOutAnimationDelay })
+    ])
   ]);
-};
-
-const defaultViewFadeOutAnimation = () => {
-  return trigger('defaultViewFadeOutAnimation', [
-    state('fade-out', style({ opacity: fadeOutAnimationTo })),
-    transition('void => fade-out', [
-      useAnimation(fadeOutAnimation, {
-        params: {
-          from: fadeOutAnimationFrom,
-          to: fadeOutAnimationTo,
-          duration: fadeOutAnimationDuration,
-          easing: fadeOutAnimationEasing
-        }
-      })
-    ]),
-  ]);
-};
-
-const hoverViewFadeOutAnimation = () => {
-  return trigger('hoverViewFadeOutAnimation', [
-    state('fade-out', style({ opacity: fadeOutAnimationTo })),
-    transition('void => fade-out', [
-      useAnimation(fadeOutAnimation, {
-        params: {
-          from: fadeOutAnimationFrom,
-          to: fadeOutAnimationTo,
-          duration: fadeOutAnimationDuration,
-          easing: fadeOutAnimationEasing
-        }
-      })
-    ]),
-  ]);
-};
-
-export {
-  viewsContainerSlideInOutAnimation,
-  defaultViewFadeOutAnimation,
-  hoverViewFadeOutAnimation
 };
