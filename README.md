@@ -1,5 +1,7 @@
 # InteractiveShots
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/dimitarrusev/interactive-shots.svg)](https://greenkeeper.io/)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.6.
 
 ## Development server
