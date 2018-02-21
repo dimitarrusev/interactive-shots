@@ -1,5 +1,5 @@
-import { trigger, state, style, stagger, animate, animateChild, query, transition, useAnimation } from '@angular/animations';
-import { generateSlideAnimation, fadeAnimation } from '../../shared/utils/animations';
+import { animate, animateChild, group, query, state, style, stagger, transition, trigger, useAnimation } from '@angular/animations';
+import { generateSlideAnimation, generateVaryAnimation, fadeAnimation } from '../../shared/utils/animations';
 
 // Easing curves
 const standardEasingCurve = 'cubic-bezier(0.4, 0.0, 0.2, 1)';
@@ -28,6 +28,26 @@ const slideOutAnimationParams = {
   easing: accelerationEasingCurve
 };
 
+// increaseAnimation
+const increaseAnimationAnimateProperty = 'width';
+const increaseAnimation = generateVaryAnimation(increaseAnimationAnimateProperty);
+const increaseAnimationParams = {
+  from: '0%',
+  to: '42%',
+  duration: '200ms',
+  easing: standardEasingCurve
+};
+
+// decreaseAnimation
+const decreaseAnimationAnimateProperty = 'width';
+const decreaseAnimation = generateVaryAnimation(decreaseAnimationAnimateProperty);
+const decreaseAnimationParams = {
+  from: '42%',
+  to: '0%',
+  duration: '200ms',
+  easing: standardEasingCurve
+};
+
 // fadeOutAnimation
 const fadeOutAnimation = fadeAnimation;
 const fadeOutAnimationParams = {
@@ -36,7 +56,6 @@ const fadeOutAnimationParams = {
   duration: '350ms',
   easing: decelerationEasingCurve
 };
-
 
 // Animation delays (in ms)
 const defaultViewFadeOutAnimationDelay = 1500;
@@ -47,9 +66,18 @@ const viewsContainerSlideOutAnimationDelay = 2000;
 export const animation = () => {
   return trigger('animation', [
     transition('void => play', [
-      useAnimation(slideInAnimation, { params: slideInAnimationParams }),
-      query('img.default, img.hover', stagger(hoverViewFadeOutAnimationDelay, [ useAnimation(fadeOutAnimation, { params: fadeOutAnimationParams }) ]), { delay: defaultViewFadeOutAnimationDelay }),
-      query(':self', [ useAnimation(slideOutAnimation, { params: slideOutAnimationParams }) ], { delay: viewsContainerSlideOutAnimationDelay })
+      // slide in views container
+      group([
+        query('.background > .panel', [ useAnimation(increaseAnimation, { params: increaseAnimationParams }) ]),
+        query('.views', [ useAnimation(slideInAnimation, { params: slideInAnimationParams }) ])
+      ]),
+      // fade out default and hover views
+      query('.views > img.default, .views > img.hover', stagger(hoverViewFadeOutAnimationDelay, [ useAnimation(fadeOutAnimation, { params: fadeOutAnimationParams }) ]), { delay: defaultViewFadeOutAnimationDelay }),
+      // slide out views container
+      group([
+        query('.background > .panel', [ useAnimation(decreaseAnimation, { params: decreaseAnimationParams }) ]),
+        query('.views', [ useAnimation(slideOutAnimation, { params: slideOutAnimationParams }) ])
+      ], { delay: viewsContainerSlideOutAnimationDelay })
     ])
   ]);
 };

@@ -1,15 +1,14 @@
 <div class="container" fxLayout="row" fxLayoutAlign="center center">
   <div class="frame">
-    <div class="shot">
-      <div class="views" [@animation]="animationState" (@animation.done)="onAnimationDone($event)">
+    <div class="shot" [@animation]="animationState" (@animation.done)="onAnimationDone($event)">
+      <div class="views">
         <img class="default" src="assets/2do/register/default.png" alt="default">
         <img class="hover" src="assets/2do/register/hover.png" alt="hover">
         <img class="active" src="assets/2do/register/active.png" alt="active">
       </div>
 
       <div class="background">
-        <div class="left-panel" [fxFlex]="backgroundLeftPanelWidth"></div>
-        <div class="right-panel" fxFlex></div>
+        <div class="panel"></div>
       </div>
 
       <button mat-fab

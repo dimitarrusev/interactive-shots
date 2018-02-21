@@ -10,8 +10,7 @@ import { animation } from './todo-register.animations';
   ]
 })
 export class TodoRegisterComponent implements OnInit {
-  initAnimation: boolean = false;
-  backgroundLeftPanelWidth: number = 0;
+  initializeAnimation: boolean = false;
   animationState: 'void' | 'play' = 'void';
   startAnimationBtnState: 'enabled' | 'disabled' = 'enabled';
   startAnimationBtnIcon: 'play_arrow' | 'replay' = 'play_arrow';
@@ -23,15 +22,13 @@ export class TodoRegisterComponent implements OnInit {
   ngOnInit() {}
 
   triggerAnimation() {
-    this.initAnimation = true;
-    this.backgroundLeftPanelWidth = 42;
+    this.initializeAnimation = true;
     this.animationState = 'play';
     this.startAnimationBtnState = 'disabled';
-    this.startAnimationBtnIcon = (!this.initAnimation) ? 'play_arrow' : 'replay';
+    this.startAnimationBtnIcon = (!this.initializeAnimation) ? 'play_arrow' : 'replay';
   }
 
   resetAnimationState() {
-    this.backgroundLeftPanelWidth = 0;
     this.animationState = 'void';
     this.startAnimationBtnState = 'enabled';
     this.startAnimationBtnTooltipText = 'replay';

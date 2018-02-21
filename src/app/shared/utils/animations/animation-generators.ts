@@ -33,3 +33,25 @@ export const generateSlideAnimation = (animateProperty: 'top' | 'bottom' | 'left
 
   return slideAnimation;
 };
+
+export const generateVaryAnimation = (animateProperty: 'width' | 'height') => {
+  var increaseAnimation;
+
+  switch(animateProperty) {
+    default:
+    case 'width':
+        increaseAnimation = animation([
+          style({ width: '{{ from }}' }),
+          animate('{{ duration }} {{ easing }}', style({ width: '{{ to }}' }))
+        ]);
+      break;
+    case 'height':
+        increaseAnimation = animation([
+          style({ height: '{{ from }}' }),
+          animate('{{ duration }} {{ easing }}', style({ height: '{{ to }}' }))
+        ]);
+      break;
+  }
+
+  return increaseAnimation;
+};
