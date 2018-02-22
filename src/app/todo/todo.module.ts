@@ -6,6 +6,7 @@ import { MatButtonModule, MatIconModule, MatTooltipModule } from '@angular/mater
 import { TodoRoutingModule } from './todo-routing.module';
 import { TodoComponent } from './todo.component';
 import { TodoRegisterComponent } from './todo-register/todo-register.component';
+import { TodoLoginComponent } from './todo-login/todo-login.component';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { TodoRegisterComponent } from './todo-register/todo-register.component';
   ],
   declarations: [
     TodoComponent,
-    TodoRegisterComponent
+    TodoRegisterComponent,
+    TodoLoginComponent
   ]
 })
 export class TodoModule { }

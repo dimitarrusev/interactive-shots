@@ -1,0 +1,23 @@
+<div class="container" fxLayout="row" fxLayoutAlign="center center">
+  <div class="frame">
+    <div class="shot" #shotRef>
+      <div class="views">
+        <img class="default" src="assets/2do/login/default.png" alt="default">
+        <img class="hover" src="assets/2do/login/hover.png" alt="hover">
+        <img class="active" src="assets/2do/login/active.png" alt="active">
+      </div>
+
+      <div class="background">
+        <div class="panel"></div>
+      </div>
+
+      <button mat-fab
+              [matTooltip]="playAnimationBtnTooltipText"
+              [matTooltipPosition]="playAnimationBtnTooltipPosition"
+              [disabled]="(playAnimationBtnState === 'enabled') ? false : true"
+              (click)="animationPlayer.play()">
+        <mat-icon>{{ playAnimationBtnIcon }}</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
