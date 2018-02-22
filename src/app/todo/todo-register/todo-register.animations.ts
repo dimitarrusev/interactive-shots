@@ -63,21 +63,30 @@ const hoverViewFadeOutAnimationDelay = 2000;
 const viewsContainerSlideOutAnimationDelay = 2000;
 
 // Animations
-export const animation = () => {
-  return trigger('animation', [
-    transition('void => play', [
-      // slide in views container
-      group([
-        query('.background > .panel', [ useAnimation(increaseAnimation, { params: increaseAnimationParams }) ]),
-        query('.views', [ useAnimation(slideInAnimation, { params: slideInAnimationParams }) ])
+export const todoRegisterAnimation = () => {
+  return [
+    group([
+      query('.background > .panel', [
+        useAnimation(increaseAnimation, { params: increaseAnimationParams })
       ]),
-      // fade out default and hover views
-      query('.views > img.default, .views > img.hover', stagger(hoverViewFadeOutAnimationDelay, [ useAnimation(fadeOutAnimation, { params: fadeOutAnimationParams }) ]), { delay: defaultViewFadeOutAnimationDelay }),
-      // slide out views container
-      group([
-        query('.background > .panel', [ useAnimation(decreaseAnimation, { params: decreaseAnimationParams }) ]),
-        query('.views', [ useAnimation(slideOutAnimation, { params: slideOutAnimationParams }) ])
-      ], { delay: viewsContainerSlideOutAnimationDelay })
-    ])
-  ]);
+      query('.views', [
+        useAnimation(slideInAnimation, { params: slideInAnimationParams })
+      ])
+    ]),
+
+    // `defaultViewFadeOutAnimationDelay` is passed as parameter to the `query()` function
+    // because `hoverViewFadeOutAnimationDelay` does not apply to the first match of the query
+    query('.views > img.default, .views > img.hover', stagger(hoverViewFadeOutAnimationDelay, [
+      useAnimation(fadeOutAnimation, { params: fadeOutAnimationParams })
+    ]), { delay: defaultViewFadeOutAnimationDelay }),
+
+    group([
+      query('.background > .panel', [
+        useAnimation(decreaseAnimation, { params: decreaseAnimationParams })
+      ]),
+      query('.views', [
+        useAnimation(slideOutAnimation, { params: slideOutAnimationParams })
+      ])
+    ], { delay: viewsContainerSlideOutAnimationDelay })
+  ];
 };

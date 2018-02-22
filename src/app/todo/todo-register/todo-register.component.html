@@ -1,6 +1,6 @@
 <div class="container" fxLayout="row" fxLayoutAlign="center center">
   <div class="frame">
-    <div class="shot" [@animation]="animationState" (@animation.done)="onAnimationDone($event)">
+    <div class="shot" #shotRef>
       <div class="views">
         <img class="default" src="assets/2do/register/default.png" alt="default">
         <img class="hover" src="assets/2do/register/hover.png" alt="hover">
@@ -12,11 +12,11 @@
       </div>
 
       <button mat-fab
-              [matTooltip]="startAnimationBtnTooltipText"
-              [matTooltipPosition]="startAnimationBtnTooltpPosition"
-              [disabled]="(startAnimationBtnState === 'enabled') ? false : true"
-              (click)="triggerAnimation()">
-        <mat-icon>{{ startAnimationBtnIcon }}</mat-icon>
+              [matTooltip]="playAnimationBtnTooltipText"
+              [matTooltipPosition]="playAnimationBtnTooltipPosition"
+              [disabled]="(playAnimationBtnState === 'enabled') ? false : true"
+              (click)="animationPlayer.play()">
+        <mat-icon>{{ playAnimationBtnIcon }}</mat-icon>
       </button>
     </div>
   </div>

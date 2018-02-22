@@ -1,42 +1,42 @@
-import { Component, OnInit } from '@angular/core';
-import { animation } from './todo-register.animations';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { AnimationBuilder, AnimationPlayer, AnimationFactory } from '@angular/animations';
+import { todoRegisterAnimation } from './todo-register.animations';
 
 @Component({
   selector: 'app-todo-register',
   templateUrl: './todo-register.component.html',
-  styleUrls: ['./todo-register.component.scss'],
-  animations: [
-    animation()
-  ]
+  styleUrls: ['./todo-register.component.scss']
 })
 export class TodoRegisterComponent implements OnInit {
+  animationPlayer: AnimationPlayer;
   initializeAnimation: boolean = false;
-  animationState: 'void' | 'play' = 'void';
-  startAnimationBtnState: 'enabled' | 'disabled' = 'enabled';
-  startAnimationBtnIcon: 'play_arrow' | 'replay' = 'play_arrow';
-  startAnimationBtnTooltipText: 'play' | 'replay' = 'play';
-  startAnimationBtnTooltpPosition: 'before' | 'after' | 'above' | 'below' | 'left' | 'right' = 'above';
+  playAnimationBtnState: 'enabled' | 'disabled' = 'enabled';
+  playAnimationBtnIcon: 'play_arrow' | 'replay' = 'play_arrow';
+  playAnimationBtnTooltipText: 'play' | 'replay' = 'play';
+  playAnimationBtnTooltipPosition: 'before' | 'after' | 'above' | 'below' | 'left' | 'right' = 'above';
 
-  constructor() {}
+  @ViewChild('shotRef') shotRef: ElementRef;
 
-  ngOnInit() {}
+  constructor(private animationBuilder: AnimationBuilder) {}
 
-  triggerAnimation() {
-    this.initializeAnimation = true;
-    this.animationState = 'play';
-    this.startAnimationBtnState = 'disabled';
-    this.startAnimationBtnIcon = (!this.initializeAnimation) ? 'play_arrow' : 'replay';
+  ngOnInit() {
+    this.animationPlayer = this.buildAnimationPlayer();
+    this.animationPlayer.onStart(() => {
+      this.initializeAnimation = true;
+      this.playAnimationBtnState = 'disabled';
+    });
+    this.animationPlayer.onDone(() => {
+      this.playAnimationBtnState = 'enabled';
+      this.playAnimationBtnIcon = 'replay';
+      this.playAnimationBtnTooltipText = 'replay';
+    });
   }
 
-  resetAnimationState() {
-    this.animationState = 'void';
-    this.startAnimationBtnState = 'enabled';
-    this.startAnimationBtnTooltipText = 'replay';
+  private buildAnimation(): AnimationFactory {
+    return this.animationBuilder.build(todoRegisterAnimation());
   }
 
-  onAnimationDone(evt) {
-    if (evt.fromState === 'void' && evt.toState === 'play') {
-      this.resetAnimationState();
-    }
+  private buildAnimationPlayer(): AnimationPlayer {
+    return this.buildAnimation().create(this.shotRef.nativeElement);
   }
 }
