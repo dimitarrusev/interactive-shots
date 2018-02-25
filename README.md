@@ -1,4 +1,4 @@
-# InteractiveShots
+# Interactive Shots
 
 [![Build Status](https://travis-ci.org/dimitarrusev/interactive-shots.svg?branch=master)](https://travis-ci.org/dimitarrusev/interactive-shots)
 [![Greenkeeper badge](https://badges.greenkeeper.io/dimitarrusev/interactive-shots.svg)](https://greenkeeper.io/)
