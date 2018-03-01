@@ -11,8 +11,20 @@ const routes = [
     component: TodoComponent,
     children: [
       { path: '', pathMatch: 'full', redirectTo: 'register' },
-      { path: 'register', component: TodoRegisterComponent },
-      { path: 'login', component: TodoLoginComponent }
+      {
+        path: 'register',
+        component: TodoRegisterComponent,
+        data: {
+          animation: 'todoRegisterAnimation'
+        }
+      },
+      {
+        path: 'login',
+        component: TodoLoginComponent,
+        data: {
+          animation: 'todoLoginAnimation'
+        }
+      }
     ]
   }
 ];

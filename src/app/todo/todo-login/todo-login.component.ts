@@ -21,10 +21,12 @@ export class TodoLoginComponent implements OnInit {
 
   ngOnInit() {
     this.animationPlayer = this.buildAnimationPlayer();
+
     this.animationPlayer.onStart(() => {
       this.initializeAnimation = true;
       this.playAnimationBtnState = 'disabled';
     });
+
     this.animationPlayer.onDone(() => {
       this.playAnimationBtnState = 'enabled';
       this.playAnimationBtnIcon = 'replay';
