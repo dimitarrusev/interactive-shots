@@ -10,6 +10,8 @@ import { routeAnimations } from './todo.animations';
   ]
 })
 export class TodoComponent implements OnInit {
+  animationDone: boolean = false;
+
   constructor() {}
 
   ngOnInit() {}

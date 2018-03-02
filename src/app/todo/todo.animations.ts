@@ -36,15 +36,12 @@ const leaveRouteAnimationParams = {
   easing: decelerationEasingCurve
 };
 
-// Animation delays (in ms)
-const enterAnimationDelay = 25;
-
 // Animations
 export const routeAnimations = () => {
   return trigger('routeAnimation', [
     transition('* => *', [
       group([
-        query(':enter', useAnimation(enterRouteAnimation, { params: enterRouteAnimationParams }), { delay: enterAnimationDelay }),
+        query(':enter', useAnimation(enterRouteAnimation, { params: enterRouteAnimationParams })),
         query(':leave', useAnimation(leaveRouteAnimation, { params: leaveRouteAnimationParams }), { optional: true })
       ])
     ])
