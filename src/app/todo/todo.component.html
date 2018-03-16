@@ -1,4 +1,4 @@
-<div class="outlet-container" [@routeAnimation]="prepRouteState(routerOutlet)">
+<div class="outlet-container" [@routeAnimation]="prepRouteState(routerOutlet)" (@routeAnimation.done)="onRouteAnimationDone($event)">
   <router-outlet #routerOutlet="outlet"></router-outlet>
 </div>
 

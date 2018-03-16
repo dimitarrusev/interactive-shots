@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { routeAnimations } from './todo.animations';
 
+import { TodoService } from './todo.service';
+
 @Component({
   selector: 'app-todo',
   templateUrl: './todo.component.html',
@@ -10,13 +12,15 @@ import { routeAnimations } from './todo.animations';
   ]
 })
 export class TodoComponent implements OnInit {
-  animationDone: boolean = false;
-
-  constructor() {}
+  constructor(private todoService: TodoService) {}
 
   ngOnInit() {}
 
   prepRouteState(outlet: any) {
     return outlet.activatedRouteData['animation'] || 'appAnimation';
+  }
+
+  onRouteAnimationDone(evt) {
+    this.todoService.setRouteAnimationState('done');
   }
 }

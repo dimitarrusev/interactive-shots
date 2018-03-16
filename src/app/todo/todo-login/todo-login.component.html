@@ -12,6 +12,7 @@
       </div>
 
       <button mat-fab
+              *ngIf="revealPlayAnimationBtn"
               [matTooltip]="playAnimationBtnTooltipText"
               [matTooltipPosition]="playAnimationBtnTooltipPosition"
               [disabled]="(playAnimationBtnState === 'enabled') ? false : true"

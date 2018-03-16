@@ -5,6 +5,7 @@ import { MatButtonModule, MatIconModule, MatTooltipModule } from '@angular/mater
 
 import { TodoRoutingModule } from './todo-routing.module';
 import { TodoComponent } from './todo.component';
+import { TodoService } from './todo.service';
 import { TodoRegisterComponent } from './todo-register/todo-register.component';
 import { TodoLoginComponent } from './todo-login/todo-login.component';
 
@@ -19,6 +20,9 @@ import { TodoLoginComponent } from './todo-login/todo-login.component';
     TodoComponent,
     TodoRegisterComponent,
     TodoLoginComponent
+  ],
+  providers: [
+    TodoService
   ]
 })
 export class TodoModule { }
