@@ -1,20 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule, MatIconModule, MatTooltipModule } from '@angular/material';
 
-import { TodoRoutingModule } from './todo-routing.module';
-import { TodoComponent } from './todo.component';
-import { TodoService } from './todo.service';
-import { TodoRegisterComponent } from './todo-register/todo-register.component';
-import { TodoLoginComponent } from './todo-login/todo-login.component';
+import { TodoComponent, TodoRegisterComponent, TodoLoginComponent } from './components';
+import { TodoService } from './services';
+import { routes } from './todo.routes';
 
 @NgModule({
   imports: [
     CommonModule,
     FlexLayoutModule,
     MatButtonModule, MatIconModule, MatTooltipModule,
-    TodoRoutingModule
+    RouterModule.forChild(routes)
   ],
   declarations: [
     TodoComponent,

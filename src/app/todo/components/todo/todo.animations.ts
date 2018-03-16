@@ -1,5 +1,5 @@
 import { animate, group, query, style, transition, trigger, useAnimation } from '@angular/animations';
-import { routeAnimation } from '../shared/utils/animations';
+import { routeAnimation } from '../../../shared/utils/animations';
 
 // Easing curves
 const standardEasingCurve = 'cubic-bezier(0.4, 0.0, 0.2, 1)';

@@ -2,15 +2,15 @@ import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/co
 import { AnimationBuilder, AnimationPlayer, AnimationFactory } from '@angular/animations';
 import { Subscription } from 'rxjs/Subscription';
 
-import { TodoService } from '../todo.service';
-import { todoLoginAnimation } from './todo-login.animations';
+import { TodoService } from '../../services';
+import { todoRegisterAnimation } from './todo-register.animations';
 
 @Component({
-  selector: 'app-todo-login',
-  templateUrl: './todo-login.component.html',
-  styleUrls: ['./todo-login.component.scss']
+  selector: 'app-todo-register',
+  templateUrl: './todo-register.component.html',
+  styleUrls: ['./todo-register.component.scss']
 })
-export class TodoLoginComponent implements OnInit, OnDestroy {
+export class TodoRegisterComponent implements OnInit, OnDestroy {
   routeAnimationState: Subscription;
   animationPlayer: AnimationPlayer;
   initializeAnimation: boolean = false;
@@ -35,12 +35,10 @@ export class TodoLoginComponent implements OnInit, OnDestroy {
     });
 
     this.animationPlayer = this.buildAnimationPlayer();
-
     this.animationPlayer.onStart(() => {
       this.initializeAnimation = true;
       this.playAnimationBtnState = 'disabled';
     });
-
     this.animationPlayer.onDone(() => {
       this.playAnimationBtnState = 'enabled';
       this.playAnimationBtnIcon = 'replay';
@@ -54,7 +52,7 @@ export class TodoLoginComponent implements OnInit, OnDestroy {
   }
 
   private buildAnimation(): AnimationFactory {
-    return this.animationBuilder.build(todoLoginAnimation());
+    return this.animationBuilder.build(todoRegisterAnimation());
   }
 
   private buildAnimationPlayer(): AnimationPlayer {
