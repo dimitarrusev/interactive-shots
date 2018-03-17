@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --no-aot --prod --base-href 'https://dimitarrusev.com/interactive-shots/' --deploy-url 'https://dimitarrusev.com/interactive-shots/'",
+    "build": "ng build --prod --base-href 'https://dimitarrusev.com/interactive-shots/' --deploy-url 'https://dimitarrusev.com/interactive-shots/'",
     "deploy": "ngh --repo https://GH_TOKEN@github.com/dimitarrusev/interactive-shots.git --message 'auto-generated message'",
     "test": "ng test",
     "lint": "ng lint",

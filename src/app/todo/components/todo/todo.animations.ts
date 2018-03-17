@@ -36,8 +36,7 @@ const leaveRouteAnimationParams = {
   easing: decelerationEasingCurve
 };
 
-// Animations
-export const routeAnimations = () => {
+export function routeAnimations() {
   return trigger('routeAnimation', [
     transition('* => *', [
       group([
