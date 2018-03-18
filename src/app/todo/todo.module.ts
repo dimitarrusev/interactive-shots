@@ -20,4 +20,4 @@ import { routes } from './todo.routes';
     TodoLoginComponent
   ]
 })
-export class TodoModule { }
+export class TodoModule {}

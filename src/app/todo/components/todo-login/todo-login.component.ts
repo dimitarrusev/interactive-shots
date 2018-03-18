@@ -29,9 +29,9 @@ export class TodoLoginComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.routeAnimationState = this.routeCommunicationService.routeAnimationState$.subscribe(routeAnimationState => {
-      (routeAnimationState === 'done')
-        ? this.revealPlayAnimationBtn = true
-        : this.revealPlayAnimationBtn = false
+      if (routeAnimationState === 'done') {
+        this.revealPlayAnimationBtn = true;
+      }
     });
 
     this.animationPlayer = this.buildAnimationPlayer();
@@ -50,7 +50,7 @@ export class TodoLoginComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.routeAnimationState.unsubscribe();
-    this.routeCommunicationService.setRouteAnimationState(undefined);
+    this.routeCommunicationService.setRouteAnimationState(null);
   }
 
   private buildAnimation(): AnimationFactory {

@@ -11,7 +11,7 @@ import { todoRegisterAnimation } from './todo-register.animations';
   styleUrls: ['./todo-register.component.scss']
 })
 export class TodoRegisterComponent implements OnInit, OnDestroy {
-  routeAnimationState: Subscription;
+  routeAnimationStateSubscription: Subscription;
   animationPlayer: AnimationPlayer;
   initializeAnimation: boolean = false;
   revealPlayAnimationBtn: boolean = false;
@@ -28,10 +28,11 @@ export class TodoRegisterComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.routeAnimationState = this.routeCommunicationService.routeAnimationState$.subscribe(routeAnimationState => {
-      (routeAnimationState === 'done')
-        ? this.revealPlayAnimationBtn = true
-        : this.revealPlayAnimationBtn = false
+    this.routeAnimationStateSubscription = this.routeCommunicationService.routeAnimationState$.subscribe(routeAnimationState => {
+      if (routeAnimationState === 'done') {
+        this.routeCommunicationService.setInitialRouteIsInitialized(true);
+        this.revealPlayAnimationBtn = true;
+      }
     });
 
     this.animationPlayer = this.buildAnimationPlayer();
@@ -47,8 +48,8 @@ export class TodoRegisterComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.routeAnimationState.unsubscribe();
-    this.routeCommunicationService.setRouteAnimationState(undefined);
+    this.routeAnimationStateSubscription.unsubscribe();
+    this.routeCommunicationService.setRouteAnimationState(null);
   }
 
   private buildAnimation(): AnimationFactory {

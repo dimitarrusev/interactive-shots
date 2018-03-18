@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
+import { first } from 'rxjs/operators/first';
+
+import { RouteCommunicationService } from './core';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +16,18 @@ import { Component } from '@angular/core';
   `,
   styles: []
 })
-export class AppComponent {
-  title = 'app';
+export class AppComponent implements OnInit {
+  private spinner: Element = document.getElementById('spinner');
+
+  constructor(private routeCommunicationService: RouteCommunicationService) {}
+
+  ngOnInit() {
+    this.routeCommunicationService.initialRouteIsInitialized$
+      .pipe(first())
+      .subscribe(initialRouteIsInitialized => {
+        if (initialRouteIsInitialized) {
+          this.spinner.remove();
+        }
+      });
+  }
 }
