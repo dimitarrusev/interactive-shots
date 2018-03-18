@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/co
 import { AnimationBuilder, AnimationPlayer, AnimationFactory } from '@angular/animations';
 import { Subscription } from 'rxjs/Subscription';
 
-import { TodoService } from '../../services';
+import { RouteCommunicationService } from '../../../core';
 import { todoRegisterAnimation } from './todo-register.animations';
 
 @Component({
@@ -23,12 +23,12 @@ export class TodoRegisterComponent implements OnInit, OnDestroy {
   @ViewChild('shotRef') shotRef: ElementRef;
 
   constructor(
-    private todoService: TodoService,
+    private routeCommunicationService: RouteCommunicationService,
     private animationBuilder: AnimationBuilder
   ) {}
 
   ngOnInit() {
-    this.routeAnimationState = this.todoService.routeAnimationState$.subscribe(routeAnimationState => {
+    this.routeAnimationState = this.routeCommunicationService.routeAnimationState$.subscribe(routeAnimationState => {
       (routeAnimationState === 'done')
         ? this.revealPlayAnimationBtn = true
         : this.revealPlayAnimationBtn = false
@@ -48,7 +48,7 @@ export class TodoRegisterComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.routeAnimationState.unsubscribe();
-    this.todoService.setRouteAnimationState(undefined);
+    this.routeCommunicationService.setRouteAnimationState(undefined);
   }
 
   private buildAnimation(): AnimationFactory {

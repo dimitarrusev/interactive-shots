@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { routeAnimations } from './todo.animations';
 
-import { TodoService } from '../../services';
+import { RouteCommunicationService } from '../../../core';
 
 @Component({
   selector: 'app-todo',
@@ -12,7 +12,9 @@ import { TodoService } from '../../services';
   ]
 })
 export class TodoComponent implements OnInit {
-  constructor(private todoService: TodoService) {}
+  constructor(
+    private routeCommunicationService: RouteCommunicationService
+  ) {}
 
   ngOnInit() {}
 
@@ -21,6 +23,6 @@ export class TodoComponent implements OnInit {
   }
 
   onRouteAnimationDone(evt) {
-    this.todoService.setRouteAnimationState('done');
+    this.routeCommunicationService.setRouteAnimationState('done');
   }
 }

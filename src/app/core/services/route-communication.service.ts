@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 type RouteAnimationState = undefined | 'start' | 'done';
 
 @Injectable()
-export class TodoService {
+export class RouteCommunicationService {
   private routeAnimationState: BehaviorSubject<RouteAnimationState> = new BehaviorSubject(undefined);
   public readonly routeAnimationState$: Observable<RouteAnimationState> = this.routeAnimationState.asObservable();
 

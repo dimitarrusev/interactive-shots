@@ -5,7 +5,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule, MatIconModule, MatTooltipModule } from '@angular/material';
 
 import { TodoComponent, TodoRegisterComponent, TodoLoginComponent } from './components';
-import { TodoService } from './services';
 import { routes } from './todo.routes';
 
 @NgModule({
@@ -19,9 +18,6 @@ import { routes } from './todo.routes';
     TodoComponent,
     TodoRegisterComponent,
     TodoLoginComponent
-  ],
-  providers: [
-    TodoService
   ]
 })
 export class TodoModule { }
