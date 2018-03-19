@@ -25,7 +25,7 @@ export class TodoRegisterComponent implements OnInit, OnDestroy {
   @ViewChild('playAnimationBtnRef', { read: ElementRef }) playAnimationBtnRef: ElementRef;
 
   constructor(
-    private routeCommunicationService: RouteCommunicationService,
+    public routeCommunicationService: RouteCommunicationService,
     private animationBuilder: AnimationBuilder
   ) {}
 
