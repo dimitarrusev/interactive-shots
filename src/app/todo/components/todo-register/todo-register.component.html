@@ -1,6 +1,6 @@
 <div class="container" fxLayout="row" fxLayoutAlign="center center">
-  <div class="frame">
-    <div class="shot" #shotRef>
+  <div class="frame" [ngClass]="{ 'oneX': (routeCommunicationService.shotSize$ | async) === 'oneX' }">
+    <div class="shot" (click)="toggleShotSize($event) "#shotRef>
       <div class="views">
         <img class="default" src="assets/2do/register/default.png" alt="default">
         <img class="hover" src="assets/2do/register/hover.png" alt="hover">
@@ -16,7 +16,8 @@
               [matTooltip]="playAnimationBtnTooltipText"
               [matTooltipPosition]="playAnimationBtnTooltipPosition"
               [disabled]="(playAnimationBtnState === 'enabled') ? false : true"
-              (click)="animationPlayer.play()">
+              (click)="animationPlayer.play()"
+              #playAnimationBtnRef>
         <mat-icon>{{ playAnimationBtnIcon }}</mat-icon>
       </button>
     </div>

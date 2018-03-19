@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { AnimationBuilder, AnimationPlayer, AnimationFactory } from '@angular/animations';
 import { Subscription } from 'rxjs/Subscription';
+import { first } from 'rxjs/operators';
 
 import { RouteCommunicationService } from '../../../core';
 import { todoLoginAnimation } from './todo-login.animations';
@@ -11,7 +12,7 @@ import { todoLoginAnimation } from './todo-login.animations';
   styleUrls: ['./todo-login.component.scss']
 })
 export class TodoLoginComponent implements OnInit, OnDestroy {
-  routeAnimationState: Subscription;
+  routeAnimationStateSubscription: Subscription;
   animationPlayer: AnimationPlayer;
   initializeAnimation: boolean = false;
   revealPlayAnimationBtn: boolean = false;
@@ -21,6 +22,7 @@ export class TodoLoginComponent implements OnInit, OnDestroy {
   playAnimationBtnTooltipPosition: 'before' | 'after' | 'above' | 'below' | 'left' | 'right' = 'above';
 
   @ViewChild('shotRef') shotRef: ElementRef;
+  @ViewChild('playAnimationBtnRef', { read: ElementRef }) playAnimationBtnRef: ElementRef;
 
   constructor(
     private routeCommunicationService: RouteCommunicationService,
@@ -28,7 +30,7 @@ export class TodoLoginComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.routeAnimationState = this.routeCommunicationService.routeAnimationState$.subscribe(routeAnimationState => {
+    this.routeAnimationStateSubscription = this.routeCommunicationService.routeAnimationState$.subscribe(routeAnimationState => {
       if (routeAnimationState === 'done') {
         this.revealPlayAnimationBtn = true;
       }
@@ -49,7 +51,7 @@ export class TodoLoginComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.routeAnimationState.unsubscribe();
+    this.routeAnimationStateSubscription.unsubscribe();
     this.routeCommunicationService.setRouteAnimationState(null);
   }
 
@@ -59,5 +61,19 @@ export class TodoLoginComponent implements OnInit, OnDestroy {
 
   private buildAnimationPlayer(): AnimationPlayer {
     return this.buildAnimation().create(this.shotRef.nativeElement);
+  }
+
+  toggleShotSize(evt) {
+    // Toggle size only if the click is inside the shot,
+    // but outside the play/replay button.
+    if (!this.playAnimationBtnRef.nativeElement.contains(evt.target)) {
+      this.routeCommunicationService.shotSize$
+        .pipe(first())
+        .subscribe(shotSize => {
+          (shotSize === 'oneX')
+            ? this.routeCommunicationService.setShotSize('twoX')
+            : this.routeCommunicationService.setShotSize('oneX');
+        })
+    }
   }
 }

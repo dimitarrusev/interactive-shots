@@ -22,6 +22,10 @@ export class AppComponent implements OnInit {
   constructor(private routeCommunicationService: RouteCommunicationService) {}
 
   ngOnInit() {
+    (window.innerWidth < 960)
+      ? this.routeCommunicationService.setShotSize('oneX')
+      : this.routeCommunicationService.setShotSize('twoX');
+
     this.routeCommunicationService.initialRouteIsInitialized$
       .pipe(first())
       .subscribe(initialRouteIsInitialized => {
