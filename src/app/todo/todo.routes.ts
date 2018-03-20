@@ -1,5 +1,10 @@
 import { Routes } from '@angular/router';
-import { TodoComponent, TodoRegisterComponent, TodoLoginComponent } from './components';
+import {
+  TodoComponent,
+  TodoRegisterComponent,
+  TodoLoginComponent,
+  TodoResetPasswordComponent
+} from './components';
 
 export const routes: Routes = [
   {
@@ -19,6 +24,13 @@ export const routes: Routes = [
         component: TodoLoginComponent,
         data: {
           animation: 'todoLoginAnimation'
+        }
+      },
+      {
+        path: 'reset-password',
+        component: TodoResetPasswordComponent,
+        data: {
+          animation: 'todoResetPasswordAnimation'
         }
       }
     ]

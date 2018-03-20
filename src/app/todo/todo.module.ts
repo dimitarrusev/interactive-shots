@@ -4,8 +4,13 @@ import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule, MatIconModule, MatTooltipModule } from '@angular/material';
 
-import { TodoComponent, TodoRegisterComponent, TodoLoginComponent } from './components';
 import { routes } from './todo.routes';
+import {
+  TodoComponent,
+  TodoRegisterComponent,
+  TodoLoginComponent,
+  TodoResetPasswordComponent
+} from './components';
 
 @NgModule({
   imports: [
@@ -17,7 +22,8 @@ import { routes } from './todo.routes';
   declarations: [
     TodoComponent,
     TodoRegisterComponent,
-    TodoLoginComponent
+    TodoLoginComponent,
+    TodoResetPasswordComponent
   ]
 })
 export class TodoModule {}

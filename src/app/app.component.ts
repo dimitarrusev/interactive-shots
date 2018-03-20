@@ -10,6 +10,7 @@ import { RouteCommunicationService } from './core';
     <ul>
       <li><a routerLink="2do/register">Register</a></li>
       <li><a routerLink="2do/login">Login</a></li>
+      <li><a routerLink="2do/reset-password">Reset password</a></li>
     </ul>
 
     <router-outlet></router-outlet>
