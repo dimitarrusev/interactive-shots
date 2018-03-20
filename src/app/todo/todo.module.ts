@@ -9,7 +9,8 @@ import {
   TodoComponent,
   TodoRegisterComponent,
   TodoLoginComponent,
-  TodoResetPasswordComponent
+  TodoResetPasswordComponent,
+  TodoTermsOfServiceComponent
 } from './components';
 
 @NgModule({
@@ -23,7 +24,8 @@ import {
     TodoComponent,
     TodoRegisterComponent,
     TodoLoginComponent,
-    TodoResetPasswordComponent
+    TodoResetPasswordComponent,
+    TodoTermsOfServiceComponent
   ]
 })
 export class TodoModule {}

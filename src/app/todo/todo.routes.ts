@@ -3,7 +3,8 @@ import {
   TodoComponent,
   TodoRegisterComponent,
   TodoLoginComponent,
-  TodoResetPasswordComponent
+  TodoResetPasswordComponent,
+  TodoTermsOfServiceComponent
 } from './components';
 
 export const routes: Routes = [
@@ -31,6 +32,13 @@ export const routes: Routes = [
         component: TodoResetPasswordComponent,
         data: {
           animation: 'todoResetPasswordAnimation'
+        }
+      },
+      {
+        path: 'terms-of-service',
+        component: TodoTermsOfServiceComponent,
+        data: {
+          animation: 'todoTermsOfServiceAnimation'
         }
       }
     ]

@@ -1,0 +1,25 @@
+<div class="container" fxLayout="row" fxLayoutAlign="center center">
+  <div class="frame" [ngClass]="{ 'oneX': (routeCommunicationService.shotSize$ | async) === 'oneX' }">
+    <div class="shot" (click)="toggleShotSize($event)" #shotRef>
+      <div class="views">
+        <img class="default" src="assets/2do/terms-of-service/default.png" alt="default">
+        <img class="dialog-default" src="assets/2do/terms-of-service/dialog-default.png" alt="dialog default">
+        <img class="dialog-hover" src="assets/2do/terms-of-service/dialog-hover.png" alt="dialog hover">
+      </div>
+
+      <div class="background">
+        <div class="panel"></div>
+      </div>
+
+      <button mat-fab
+              *ngIf="revealPlayAnimationBtn"
+              [matTooltip]="playAnimationBtnTooltipText"
+              [matTooltipPosition]="playAnimationBtnTooltipPosition"
+              [disabled]="(playAnimationBtnState === 'enabled') ? false : true"
+              (click)="animationPlayer.play()"
+              #playAnimationBtnRef>
+        <mat-icon>{{ playAnimationBtnIcon }}</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
