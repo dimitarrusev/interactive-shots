@@ -33,7 +33,7 @@ const increaseAnimationAnimateProperty = 'width';
 const increaseAnimation = generateVaryAnimation(increaseAnimationAnimateProperty);
 const increaseAnimationParams = {
   from: '0%',
-  to: '461px',
+  to: '42%',
   duration: '200ms',
   easing: standardEasingCurve
 };
@@ -42,7 +42,7 @@ const increaseAnimationParams = {
 const decreaseAnimationAnimateProperty = 'width';
 const decreaseAnimation = generateVaryAnimation(decreaseAnimationAnimateProperty);
 const decreaseAnimationParams = {
-  from: '461px',
+  from: '42%',
   to: '0%',
   duration: '200ms',
   easing: standardEasingCurve
