@@ -63,6 +63,14 @@ const hoverViewFadeOutAnimationDelay = 2000;
 const viewsContainerSlideOutAnimationDelay = 2000;
 
 // Animations
+const viewsQuery = `
+  .views > img.default,
+  .views > img.hover,
+  .views > img.active,
+  .views > img.confirmation-default,
+  .views > img.confirmation-hover
+`;
+
 export const todoResetPasswordAnimation = () => {
   return [
     group([
@@ -76,7 +84,7 @@ export const todoResetPasswordAnimation = () => {
 
     // `defaultViewFadeOutAnimationDelay` is passed as parameter to the `query()` function
     // because `hoverViewFadeOutAnimationDelay` does not apply to the first match of the query
-    query('.views > img.default, .views > img.hover, .views > img.active, .views > img.confirmation-default', stagger(hoverViewFadeOutAnimationDelay, [
+    query(`${ viewsQuery }`, stagger(hoverViewFadeOutAnimationDelay, [
       useAnimation(fadeOutAnimation, { params: fadeOutAnimationParams })
     ]), { delay: defaultViewFadeOutAnimationDelay }),
 
