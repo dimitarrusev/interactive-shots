@@ -35,15 +35,17 @@
 
     .default,
     .dialog-default,
-    .dialog-hover {
+    .dialog-hover,
+    .default-shadow {
       position: absolute;
       top: 0;
       left: 0;
     }
 
-    .default { z-index: 15; }
-    .dialog-default { z-index: 10; }
-    .dialog-hover { z-index: 5; }
+    .default { z-index: 20; }
+    .dialog-default { z-index: 15; }
+    .dialog-hover { z-index: 10; }
+    .default-shadow { z-index: 5; }
   }
 
   .background {
