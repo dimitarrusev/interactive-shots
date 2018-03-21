@@ -4,7 +4,8 @@ import {
   TodoRegisterComponent,
   TodoLoginComponent,
   TodoResetPasswordComponent,
-  TodoTermsOfServiceComponent
+  TodoTermsOfServiceComponent,
+  TodoDashboardComponent
 } from './components';
 
 export const routes: Routes = [
@@ -39,6 +40,13 @@ export const routes: Routes = [
         component: TodoTermsOfServiceComponent,
         data: {
           animation: 'todoTermsOfServiceAnimation'
+        }
+      },
+      {
+        path: 'dashboard',
+        component: TodoDashboardComponent,
+        data: {
+          animation: 'todoDashboardAnimation'
         }
       }
     ]

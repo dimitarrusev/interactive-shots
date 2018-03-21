@@ -1,0 +1,28 @@
+<div class="container" fxLayout="row" fxLayoutAlign="center center">
+  <div class="frame" [ngClass]="{ 'oneX': (routeCommunicationService.shotSize$ | async) === 'oneX' }">
+    <div class="shot" (click)="toggleShotSize($event)" #shotRef>
+      <div class="views">
+        <div class="authentication">
+          <img class="register" src="assets/2do/dashboard/register.png" alt="register">
+        </div>
+
+        <div class="dashboard">
+          <img class="default" src="assets/2do/dashboard/dashboard-default.png" alt="default">
+          <img class="hover" src="assets/2do/dashboard/dashboard-hover.png" alt="hover">
+          <img class="active" src="assets/2do/dashboard/dashboard-active.png" alt="active">
+          <img class="default-shadow" src="assets/2do/dashboard/dashboard-default-shadow.png" alt="default-shadow">
+        </div>
+      </div>
+
+      <button mat-fab
+              *ngIf="revealPlayAnimationBtn"
+              [matTooltip]="playAnimationBtnTooltipText"
+              [matTooltipPosition]="playAnimationBtnTooltipPosition"
+              [disabled]="(playAnimationBtnState === 'enabled') ? false : true"
+              (click)="animationPlayer.play()"
+              #playAnimationBtnRef>
+        <mat-icon>{{ playAnimationBtnIcon }}</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
