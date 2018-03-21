@@ -1,0 +1,29 @@
+<div class="container" fxLayout="row" fxLayoutAlign="center center">
+  <div class="frame" [ngClass]="{ 'oneX': (routeCommunicationService.shotSize$ | async) === 'oneX' }">
+    <div class="shot" (click)="toggleShotSize($event)" #shotRef>
+      <div class="views">
+        <img class="default" src="assets/2do/dashboard-v2/default.png" alt="default">
+        <img class="hover" src="assets/2do/dashboard-v2/hover.png" alt="hover">
+        <img class="active" src="assets/2do/dashboard-v2/active.png" alt="active">
+        <img class="active-to-default" src="assets/2do/dashboard-v2/default.png" alt="active to default">
+        <img class="search-settings" src="assets/2do/dashboard-v2/search-settings.png" alt="search settings">
+        <img class="search-results-default" src="assets/2do/dashboard-v2/search-results-default.png" alt="search results default">
+        <img class="search-results-hover" src="assets/2do/dashboard-v2/search-results-hover.png" alt="search results hover">
+        <img class="search-results-hover-to-default" src="assets/2do/dashboard-v2/default.png" alt="search results hover to default">
+        <img class="tags-default" src="assets/2do/dashboard-v2/tags-default.png" alt="tags default">
+        <img class="tags-hover" src="assets/2do/dashboard-v2/tags-hover.png" alt="tags hover">
+        <img class="default-shadow" src="assets/2do/dashboard-v2/default-shadow.png" alt="default shadow">
+      </div>
+
+      <button mat-fab
+              *ngIf="revealPlayAnimationBtn"
+              [matTooltip]="playAnimationBtnTooltipText"
+              [matTooltipPosition]="playAnimationBtnTooltipPosition"
+              [disabled]="(playAnimationBtnState === 'enabled') ? false : true"
+              (click)="animationPlayer.play()"
+              #playAnimationBtnRef>
+        <mat-icon>{{ playAnimationBtnIcon }}</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

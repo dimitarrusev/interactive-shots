@@ -4,3 +4,4 @@ export { TodoLoginComponent } from './todo-login';
 export { TodoResetPasswordComponent } from './todo-reset-password';
 export { TodoTermsOfServiceComponent } from './todo-terms-of-service';
 export { TodoDashboardComponent } from './todo-dashboard';
+export { TodoDashboardV2Component } from './todo-dashboard-v2';
