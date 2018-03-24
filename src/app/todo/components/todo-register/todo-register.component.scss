@@ -35,15 +35,17 @@
 
     .default,
     .hover,
-    .active {
+    .active,
+    .default-shadow {
       position: absolute;
       top: 0;
       left: 0;
     }
 
-    .default { z-index: 15; }
-    .hover { z-index: 10; }
-    .active { z-index: 5; }
+    .default { z-index: 20; }
+    .hover { z-index: 15; }
+    .active { z-index: 10; }
+    .default-shadow { z-index: 5; }
   }
 
   .background {
