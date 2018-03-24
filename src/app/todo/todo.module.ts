@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { DomSanitizer } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatButtonModule, MatIconModule, MatTooltipModule } from '@angular/material';
+import { MatButtonModule, MatIconModule, MatTooltipModule, MatIconRegistry } from '@angular/material';
 
 import { routes } from './todo.routes';
 import {
@@ -18,6 +20,7 @@ import {
 @NgModule({
   imports: [
     CommonModule,
+    HttpClientModule,
     FlexLayoutModule,
     MatButtonModule, MatIconModule, MatTooltipModule,
     RouterModule.forChild(routes)
@@ -32,4 +35,9 @@ import {
     TodoDashboardV2Component
   ]
 })
-export class TodoModule {}
+export class TodoModule {
+  constructor(private domSanitizer: DomSanitizer, private iconRegistry: MatIconRegistry) {
+    iconRegistry.addSvgIcon('play', domSanitizer.bypassSecurityTrustResourceUrl('assets/2do/icons/play.svg'));
+    iconRegistry.addSvgIcon('replay', domSanitizer.bypassSecurityTrustResourceUrl('assets/2do/icons/replay.svg'));
+  }
+}

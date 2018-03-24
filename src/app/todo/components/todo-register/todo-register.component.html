@@ -2,10 +2,10 @@
   <div class="frame" [ngClass]="{ 'oneX': (routeCommunicationService.shotSize$ | async) === 'oneX' }">
     <div class="shot" (click)="toggleShotSize($event) "#shotRef>
       <div class="views">
-        <img class="default" src="assets/2do/register/default.png" alt="default">
-        <img class="hover" src="assets/2do/register/hover.png" alt="hover">
-        <img class="active" src="assets/2do/register/active.png" alt="active">
-        <img class="default-shadow" src="assets/2do/register/default-shadow.png" alt="default shadow">
+        <img class="default" src="assets/2do/images/register/default.png" alt="default">
+        <img class="hover" src="assets/2do/images/register/hover.png" alt="hover">
+        <img class="active" src="assets/2do/images/register/active.png" alt="active">
+        <img class="default-shadow" src="assets/2do/images/register/default-shadow.png" alt="default shadow">
       </div>
 
       <div class="background">
@@ -19,7 +19,7 @@
               [disabled]="(playAnimationBtnState === 'enabled') ? false : true"
               (click)="animationPlayer.play()"
               #playAnimationBtnRef>
-        <mat-icon>{{ playAnimationBtnIcon }}</mat-icon>
+        <mat-icon [svgIcon]="playAnimationBtnIcon"></mat-icon>
       </button>
     </div>
   </div>

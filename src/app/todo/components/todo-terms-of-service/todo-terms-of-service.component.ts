@@ -18,7 +18,7 @@ export class TodoTermsOfServiceComponent implements OnInit, OnDestroy {
   initializeAnimation: boolean = false;
   revealPlayAnimationBtn: boolean = false;
   playAnimationBtnState: 'enabled' | 'disabled' = 'enabled';
-  playAnimationBtnIcon: 'play_arrow' | 'replay' = 'play_arrow';
+  playAnimationBtnIcon: 'play' | 'replay' = 'play';
   playAnimationBtnTooltipText: 'play' | 'replay' = 'play';
   playAnimationBtnTooltipPosition: 'before' | 'after' | 'above' | 'below' | 'left' | 'right' = 'above';
 
