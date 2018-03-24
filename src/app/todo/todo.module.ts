@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule, MatIconModule, MatTooltipModule, MatIconRegistry } from '@angular/material';
 
 import { routes } from './todo.routes';
@@ -21,7 +20,6 @@ import {
   imports: [
     CommonModule,
     HttpClientModule,
-    FlexLayoutModule,
     MatButtonModule, MatIconModule, MatTooltipModule,
     RouterModule.forChild(routes)
   ],
