@@ -32,7 +32,10 @@ export class TodoRegisterComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.routeAnimationStateSubscription = this.routeCommunicationService.routeAnimationState$.subscribe(routeAnimationState => {
       if (routeAnimationState === 'done') {
-        this.routeCommunicationService.setInitialRouteIsInitialized(true);
+        if (!this.routeCommunicationService.getInitialRouteIsInitialized()) {
+          this.routeCommunicationService.setInitialRouteIsInitialized(true);
+        }
+
         this.revealPlayAnimationBtn = true;
       }
     });

@@ -11,7 +11,7 @@ export class RouteCommunicationService {
   private shotSize: BehaviorSubject<ShotSize> = new BehaviorSubject<ShotSize>(null);
   public readonly shotSize$: Observable<ShotSize> = this.shotSize.asObservable();
 
-  private initialRouteIsInitialized: Subject<boolean> = new Subject();
+  private initialRouteIsInitialized: BehaviorSubject<boolean> = new BehaviorSubject(null);
   public readonly initialRouteIsInitialized$: Observable<boolean> = this.initialRouteIsInitialized.asObservable();
 
   private routeAnimationState: Subject<RouteAnimationState> = new Subject();
@@ -19,6 +19,10 @@ export class RouteCommunicationService {
 
   setShotSize(shotSize: ShotSize) {
     this.shotSize.next(shotSize);
+  }
+
+  getInitialRouteIsInitialized(): boolean {
+    return this.initialRouteIsInitialized.getValue();
   }
 
   setInitialRouteIsInitialized(initialRouteIsInitialized: boolean) {

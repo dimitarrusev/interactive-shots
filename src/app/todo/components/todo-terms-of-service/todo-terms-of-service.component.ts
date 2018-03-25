@@ -33,6 +33,9 @@ export class TodoTermsOfServiceComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.routeAnimationStateSubscription = this.routeCommunicationService.routeAnimationState$.subscribe(routeAnimationState => {
       if (routeAnimationState === 'done') {
+        if (!this.routeCommunicationService.getInitialRouteIsInitialized()) {
+          this.routeCommunicationService.setInitialRouteIsInitialized(true);
+        }
         this.revealPlayAnimationBtn = true;
       }
     });

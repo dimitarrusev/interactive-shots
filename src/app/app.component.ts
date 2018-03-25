@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
-import { first } from 'rxjs/operators/first';
+import { first, skipWhile } from 'rxjs/operators';
 
 import { RouteCommunicationService } from './core';
 
@@ -33,7 +33,10 @@ export class AppComponent implements OnInit {
       : this.routeCommunicationService.setShotSize('twoX');
 
     this.routeCommunicationService.initialRouteIsInitialized$
-      .pipe(first())
+      .pipe(
+        skipWhile(initialRouteIsInitialized => !initialRouteIsInitialized),
+        first()
+      )
       .subscribe(initialRouteIsInitialized => {
         if (initialRouteIsInitialized) {
           this.spinner.remove();
