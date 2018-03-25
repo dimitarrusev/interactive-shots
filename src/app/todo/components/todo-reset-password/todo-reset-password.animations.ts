@@ -1,11 +1,12 @@
 import { animate, animateChild, group, query, state, style, stagger, transition, trigger, useAnimation } from '@angular/animations';
-import { generateSlideAnimation, generateVaryAnimation, fadeAnimation } from '../../../shared/utils/animations';
-
-// Easing curves
-const standardEasingCurve = 'cubic-bezier(0.4, 0.0, 0.2, 1)';
-const decelerationEasingCurve = 'cubic-bezier(0.0, 0.0, 0.2, 1)';
-const accelerationEasingCurve = 'cubic-bezier(0.4, 0.0, 1, 1)';
-const sharpEasingCurve = 'cubic-bezier(0.4, 0.0, 0.6, 1)';
+import {
+  generateSlideAnimation,
+  generateVaryAnimation,
+  fadeAnimation,
+  decelerationEasingCurve,
+  accelerationEasingCurve,
+  standardEasingCurve
+} from '../../../shared/utils/animations';
 
 // Animation parameters
 // slideInAnimation

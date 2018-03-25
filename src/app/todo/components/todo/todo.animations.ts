@@ -1,11 +1,9 @@
 import { animate, group, query, style, transition, trigger, useAnimation } from '@angular/animations';
-import { routeAnimation } from '../../../shared/utils/animations';
-
-// Easing curves
-const standardEasingCurve = 'cubic-bezier(0.4, 0.0, 0.2, 1)';
-const decelerationEasingCurve = 'cubic-bezier(0.0, 0.0, 0.2, 1)';
-const accelerationEasingCurve = 'cubic-bezier(0.4, 0.0, 1, 1)';
-const sharpEasingCurve = 'cubic-bezier(0.4, 0.0, 0.6, 1)';
+import {
+  routeAnimation,
+  decelerationEasingCurve,
+  accelerationEasingCurve
+} from '../../../shared/utils/animations';
 
 // Animation parameters
 const routeAnimationsDuration = '450ms';
