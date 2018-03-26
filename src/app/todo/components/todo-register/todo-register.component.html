@@ -13,13 +13,12 @@
       </div>
 
       <button mat-fab
-              *ngIf="revealPlayAnimationBtn"
-              [matTooltip]="playAnimationBtnTooltipText"
-              [matTooltipPosition]="playAnimationBtnTooltipPosition"
-              [disabled]="(playAnimationBtnState === 'enabled') ? false : true"
-              (click)="animationPlayer.play()"
-              #playAnimationBtnRef>
-        <mat-icon [svgIcon]="playAnimationBtnIcon"></mat-icon>
+              [matTooltip]="playBtnTooltipText"
+              [matTooltipPosition]="playBtnTooltipPosition"
+              [disabled]="(playBtnState === 'enabled') ? false : true"
+              (click)="shotAnimationState ? shotAnimation.restart() : shotAnimation.play()"
+              #playBtnRef>
+        <mat-icon [svgIcon]="playBtnIcon"></mat-icon>
       </button>
     </div>
   </div>

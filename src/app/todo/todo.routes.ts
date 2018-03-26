@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { DeactivateGuardService } from './services';
 import {
   TodoComponent,
   TodoRegisterComponent,
@@ -18,6 +19,7 @@ export const routes: Routes = [
       {
         path: 'register',
         component: TodoRegisterComponent,
+        canDeactivate: [DeactivateGuardService],
         data: {
           animation: 'todoRegisterAnimation'
         }

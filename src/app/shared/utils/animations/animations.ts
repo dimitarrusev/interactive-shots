@@ -10,6 +10,17 @@ export const fadeAnimation = animation([
   animate('{{ duration }} {{ easing }}', style({ opacity: '{{ to }}' }))
 ]);
 
+export const fadeScaleAnimation = animation([
+  style({
+    opacity: '{{ fadeFrom }}',
+    transform: 'translateX(-25%) translateY(-25%) scale({{ scaleFrom }})' // TODO: Refactor
+  }),
+  animate('{{ duration }} {{ easing }}', style({
+    opacity: '{{ fadeTo }}',
+    transform: 'translateX(-25%) translateY(-25%) scale({{ scaleTo }})' // TODO: Refactor
+  }))
+]);
+
 export const routeAnimation = animation([
   style({
     opacity: '{{ fadeFrom }}',

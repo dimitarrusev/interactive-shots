@@ -7,7 +7,7 @@ import { RouteCommunicationService } from './core';
 @Component({
   selector: 'app-root',
   template: `
-    <!--
+   <!--
     <ul>
       <li><a routerLink="2do/register">Register</a></li>
       <li><a routerLink="2do/login">Login</a></li>
