@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatTooltipModule } from '@angular/material';
 
+import { DeactivateGuard } from './guards';
 import { RouteService, ShotService } from './services';
 import { NavigationComponent } from './components';
 
@@ -12,7 +13,7 @@ import { NavigationComponent } from './components';
     RouterModule,
     MatTooltipModule
   ],
-  providers: [RouteService, ShotService],
+  providers: [RouteService, ShotService, DeactivateGuard],
   declarations: [NavigationComponent],
   exports: [NavigationComponent]
 })

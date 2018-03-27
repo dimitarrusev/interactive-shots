@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { DeactivateGuardService } from './services';
+import { DeactivateGuard } from '../core';
 import {
   TodoComponent,
   TodoRegisterComponent,
@@ -19,7 +19,7 @@ export const routes: Routes = [
       {
         path: 'register',
         component: TodoRegisterComponent,
-        canDeactivate: [DeactivateGuardService],
+        canDeactivate: [DeactivateGuard],
         data: {
           animation: 'todoRegisterAnimation'
         }
@@ -27,7 +27,7 @@ export const routes: Routes = [
       {
         path: 'login',
         component: TodoLoginComponent,
-        canDeactivate: [DeactivateGuardService],
+        canDeactivate: [DeactivateGuard],
         data: {
           animation: 'todoLoginAnimation'
         }
@@ -35,7 +35,7 @@ export const routes: Routes = [
       {
         path: 'reset-password',
         component: TodoResetPasswordComponent,
-        canDeactivate: [DeactivateGuardService],
+        canDeactivate: [DeactivateGuard],
         data: {
           animation: 'todoResetPasswordAnimation'
         }
@@ -43,7 +43,7 @@ export const routes: Routes = [
       {
         path: 'terms-of-service',
         component: TodoTermsOfServiceComponent,
-        canDeactivate: [DeactivateGuardService],
+        canDeactivate: [DeactivateGuard],
         data: {
           animation: 'todoTermsOfServiceAnimation'
         }
@@ -51,7 +51,7 @@ export const routes: Routes = [
       {
         path: 'dashboard',
         component: TodoDashboardComponent,
-        canDeactivate: [DeactivateGuardService],
+        canDeactivate: [DeactivateGuard],
         data: {
           animation: 'todoDashboardAnimation'
         }
@@ -59,7 +59,7 @@ export const routes: Routes = [
       {
         path: 'features',
         component: TodoFeaturesComponent,
-        canDeactivate: [DeactivateGuardService],
+        canDeactivate: [DeactivateGuard],
         data: {
           animation: 'todoFeaturesAnimation'
         }

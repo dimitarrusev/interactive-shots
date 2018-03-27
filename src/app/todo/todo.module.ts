@@ -6,7 +6,6 @@ import { RouterModule } from '@angular/router';
 import { MatButtonModule, MatIconModule, MatTooltipModule, MatIconRegistry } from '@angular/material';
 
 import { routes } from './todo.routes';
-import { DeactivateGuardService } from './services';
 import {
   TodoComponent,
   TodoRegisterComponent,
@@ -32,9 +31,6 @@ import {
     TodoTermsOfServiceComponent,
     TodoDashboardComponent,
     TodoFeaturesComponent
-  ],
-  providers: [
-    DeactivateGuardService
   ]
 })
 export class TodoModule {
