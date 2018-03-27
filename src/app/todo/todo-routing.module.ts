@@ -1,15 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { DeactivateGuard } from '../core';
-import {
-  TodoComponent,
-  TodoRegisterComponent,
-  TodoLoginComponent,
-  TodoResetPasswordComponent,
-  TodoTermsOfServiceComponent,
-  TodoDashboardComponent,
-  TodoFeaturesComponent
-} from './components';
+import { TodoComponent } from './todo.component';
+import { TodoRegisterComponent } from './todo-register';
+import { TodoLoginComponent } from './todo-login';
+import { TodoResetPasswordComponent } from './todo-reset-password';
+import { TodoTermsOfServiceComponent } from './todo-terms-of-service';
+import { TodoDashboardComponent } from './todo-dashboard';
+import { TodoFeaturesComponent } from './todo-features';
 
 const routes: Routes = [
   {

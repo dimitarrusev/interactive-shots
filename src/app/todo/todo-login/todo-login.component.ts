@@ -3,8 +3,8 @@ import { AnimationBuilder, AnimationPlayer, AnimationFactory, AnimationMetadata 
 import { Subscription } from 'rxjs/Subscription';
 import { first } from 'rxjs/operators';
 
-import { RouteService, ShotService } from '../../../core';
-import { playBtnShowAnimation, playBtnHideAnimation } from '../../shared';
+import { RouteService, ShotService } from '../../core';
+import { playBtnShowAnimation, playBtnHideAnimation } from '../shared';
 import { todoLoginShotAnimation } from './todo-login.animations';
 
 @Component({

@@ -19,7 +19,7 @@ import {
   decelerationEasingCurve,
   accelerationEasingCurve,
   standardEasingCurve
-} from '../../../shared/utils/animations';
+} from '../../shared/utils/animations';
 
 export const todoTermsOfServiceShotAnimation = (): AnimationMetadata[] => {
   // Parameters

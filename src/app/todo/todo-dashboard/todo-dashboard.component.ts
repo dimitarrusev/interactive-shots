@@ -1,19 +1,18 @@
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { AnimationBuilder, AnimationPlayer, AnimationFactory, AnimationMetadata } from '@angular/animations';
 import { Subscription } from 'rxjs/Subscription';
-import { first } from 'rxjs/operators/first';
+import { first } from 'rxjs/operators';
 
-import { RouteService, ShotService } from '../../../core';
-import { playBtnShowAnimation, playBtnHideAnimation } from '../../shared';
-import { todoTermsOfServiceShotAnimation } from './todo-terms-of-service.animations';
+import { RouteService, ShotService } from '../../core';
+import { playBtnShowAnimation, playBtnHideAnimation } from '../shared';
+import { todoDashboardShotAnimation } from './todo-dashboard.animations';
 
 @Component({
-  selector: 'app-terms-of-service',
-  templateUrl: './todo-terms-of-service.component.html',
-  styleUrls: ['./todo-terms-of-service.component.scss']
+  selector: 'app-todo-dashboard',
+  templateUrl: './todo-dashboard.component.html',
+  styleUrls: ['./todo-dashboard.component.scss']
 })
-export class TodoTermsOfServiceComponent implements OnInit, OnDestroy {
-  initialRouteIsInitializedSubscription: Subscription;
+export class TodoDashboardComponent implements OnInit, OnDestroy {
   routeAnimationStateSubscription: Subscription;
   shotAnimation: AnimationPlayer;
   playBtnShowAnimation: AnimationPlayer;
@@ -34,7 +33,7 @@ export class TodoTermsOfServiceComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     // Build animations
-    this.shotAnimation = this.buildAnimationPlayer(this.shotRef, todoTermsOfServiceShotAnimation());
+    this.shotAnimation = this.buildAnimationPlayer(this.shotRef, todoDashboardShotAnimation());
     this.playBtnShowAnimation = this.buildAnimationPlayer(this.playBtnRef, playBtnShowAnimation());
     this.playBtnHideAnimation = this.buildAnimationPlayer(this.playBtnRef, playBtnHideAnimation());
 

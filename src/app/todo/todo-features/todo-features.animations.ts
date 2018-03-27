@@ -14,20 +14,19 @@ import {
 
 import {
   generateSlideAnimation,
-  generateVaryAnimation,
   fadeAnimation,
   decelerationEasingCurve,
   accelerationEasingCurve,
   standardEasingCurve
-} from '../../../shared/utils/animations';
+} from '../../shared/utils/animations';
 
-export const todoResetPasswordShotAnimation = (): AnimationMetadata[] => {
+export const todoFeaturesShotAnimation = (): AnimationMetadata[] => {
   // Parameters
   const slideInAnimationAnimateProperty = 'left';
   const slideInAnimation = generateSlideAnimation(slideInAnimationAnimateProperty);
   const slideInAnimationParams = {
     from: '800px',
-    to: '56px',
+    to: '41px',
     duration: '350ms',
     easing: decelerationEasingCurve
   };
@@ -35,28 +34,10 @@ export const todoResetPasswordShotAnimation = (): AnimationMetadata[] => {
   const slideOutAnimationAnimateProperty = 'left';
   const slideOutAnimation = generateSlideAnimation(slideOutAnimationAnimateProperty);
   const slideOutAnimationParams = {
-    from: '56px',
+    from: '41px',
     to: '-800px',
     duration: '350ms',
     easing: accelerationEasingCurve
-  };
-
-  const increaseAnimationAnimateProperty = 'width';
-  const increaseAnimation = generateVaryAnimation(increaseAnimationAnimateProperty);
-  const increaseAnimationParams = {
-    from: '0%',
-    to: '461px',
-    duration: '200ms',
-    easing: standardEasingCurve
-  };
-
-  const decreaseAnimationAnimateProperty = 'width';
-  const decreaseAnimation = generateVaryAnimation(decreaseAnimationAnimateProperty);
-  const decreaseAnimationParams = {
-    from: '461px',
-    to: '0%',
-    duration: '200ms',
-    easing: standardEasingCurve
   };
 
   const fadeOutAnimation = fadeAnimation;
@@ -77,15 +58,17 @@ export const todoResetPasswordShotAnimation = (): AnimationMetadata[] => {
     .views > img.default,
     .views > img.hover,
     .views > img.active,
-    .views > img.confirmation-default,
-    .views > img.confirmation-hover
+    .views > img.active-to-default,
+    .views > img.search-settings,
+    .views > img.search-results-default,
+    .views > img.search-results-hover,
+    .views > img.search-results-hover-to-default,
+    .views > img.tags-default,
+    .views > img.tags-hover
   `;
 
   return [
     group([
-      query('.background > .panel', [
-        useAnimation(increaseAnimation, { params: increaseAnimationParams })
-      ]),
       query('.views', [
         useAnimation(slideInAnimation, { params: slideInAnimationParams })
       ])
@@ -98,9 +81,6 @@ export const todoResetPasswordShotAnimation = (): AnimationMetadata[] => {
     ]), { delay: defaultViewFadeOutAnimationDelay }),
 
     group([
-      query('.background > .panel', [
-        useAnimation(decreaseAnimation, { params: decreaseAnimationParams })
-      ]),
       query('.views', [
         useAnimation(slideOutAnimation, { params: slideOutAnimationParams })
       ])

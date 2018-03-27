@@ -3,7 +3,7 @@ import {
   routeAnimation,
   decelerationEasingCurve,
   accelerationEasingCurve
-} from '../../../shared/utils/animations';
+} from '../shared/utils/animations';
 
 // Animation parameters
 const routeAnimationsDuration = '450ms';

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { routeAnimations } from './todo.animations';
 
-import { RouteService } from '../../../core';
+import { RouteService } from '../core';
 
 @Component({
   selector: 'app-todo',

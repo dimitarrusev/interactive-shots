@@ -19,9 +19,9 @@ import {
   decelerationEasingCurve,
   accelerationEasingCurve,
   standardEasingCurve
-} from '../../../shared/utils/animations';
+} from '../../shared/utils/animations';
 
-export const todoRegisterShotAnimation = (): AnimationMetadata[] => {
+export const todoLoginShotAnimation = (): AnimationMetadata[] => {
   // Parameters
   const slideInAnimationAnimateProperty = 'left';
   const slideInAnimation = generateSlideAnimation(slideInAnimationAnimateProperty);
@@ -45,7 +45,7 @@ export const todoRegisterShotAnimation = (): AnimationMetadata[] => {
   const increaseAnimation = generateVaryAnimation(increaseAnimationAnimateProperty);
   const increaseAnimationParams = {
     from: '0%',
-    to: '42%',
+    to: '461px',
     duration: '200ms',
     easing: standardEasingCurve
   };
@@ -53,7 +53,7 @@ export const todoRegisterShotAnimation = (): AnimationMetadata[] => {
   const decreaseAnimationAnimateProperty = 'width';
   const decreaseAnimation = generateVaryAnimation(decreaseAnimationAnimateProperty);
   const decreaseAnimationParams = {
-    from: '42%',
+    from: '461px',
     to: '0%',
     duration: '200ms',
     easing: standardEasingCurve
@@ -104,4 +104,4 @@ export const todoRegisterShotAnimation = (): AnimationMetadata[] => {
       ])
     ], { delay: viewsContainerSlideOutAnimationDelay })
   ];
-};
+}

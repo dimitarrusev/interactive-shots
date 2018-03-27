@@ -1,18 +1,19 @@
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { AnimationBuilder, AnimationPlayer, AnimationFactory, AnimationMetadata } from '@angular/animations';
 import { Subscription } from 'rxjs/Subscription';
-import { first } from 'rxjs/operators';
+import { first } from 'rxjs/operators/first';
 
-import { RouteService, ShotService } from '../../../core';
-import { playBtnShowAnimation, playBtnHideAnimation } from '../../shared';
-import { todoRegisterShotAnimation } from './todo-register.animations';
+import { RouteService, ShotService } from '../../core';
+import { playBtnShowAnimation, playBtnHideAnimation } from '../shared';
+import { todoResetPasswordShotAnimation } from './todo-reset-password.animations';
 
 @Component({
-  selector: 'app-todo-register',
-  templateUrl: './todo-register.component.html',
-  styleUrls: ['./todo-register.component.scss']
+  selector: 'app-todo-reset-password',
+  templateUrl: './todo-reset-password.component.html',
+  styleUrls: ['./todo-reset-password.component.scss']
 })
-export class TodoRegisterComponent implements OnInit, OnDestroy {
+export class TodoResetPasswordComponent implements OnInit, OnDestroy {
+  initialRouteIsInitializedSubscription: Subscription;
   routeAnimationStateSubscription: Subscription;
   shotAnimation: AnimationPlayer;
   playBtnShowAnimation: AnimationPlayer;
@@ -33,7 +34,7 @@ export class TodoRegisterComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     // Build animations
-    this.shotAnimation = this.buildAnimationPlayer(this.shotRef, todoRegisterShotAnimation());
+    this.shotAnimation = this.buildAnimationPlayer(this.shotRef, todoResetPasswordShotAnimation());
     this.playBtnShowAnimation = this.buildAnimationPlayer(this.playBtnRef, playBtnShowAnimation());
     this.playBtnHideAnimation = this.buildAnimationPlayer(this.playBtnRef, playBtnHideAnimation());
 

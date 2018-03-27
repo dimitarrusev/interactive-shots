@@ -3,16 +3,16 @@ import { AnimationBuilder, AnimationPlayer, AnimationFactory, AnimationMetadata 
 import { Subscription } from 'rxjs/Subscription';
 import { first } from 'rxjs/operators';
 
-import { RouteService, ShotService } from '../../../core';
-import { playBtnShowAnimation, playBtnHideAnimation } from '../../shared';
-import { todoFeaturesShotAnimation } from './todo-features.animations';
+import { RouteService, ShotService } from '../../core';
+import { playBtnShowAnimation, playBtnHideAnimation } from '../shared';
+import { todoRegisterShotAnimation } from './todo-register.animations';
 
 @Component({
-  selector: 'app-todo-features',
-  templateUrl: './todo-features.component.html',
-  styleUrls: ['./todo-features.component.scss']
+  selector: 'app-todo-register',
+  templateUrl: './todo-register.component.html',
+  styleUrls: ['./todo-register.component.scss']
 })
-export class TodoFeaturesComponent implements OnInit, OnDestroy {
+export class TodoRegisterComponent implements OnInit, OnDestroy {
   routeAnimationStateSubscription: Subscription;
   shotAnimation: AnimationPlayer;
   playBtnShowAnimation: AnimationPlayer;
@@ -33,7 +33,7 @@ export class TodoFeaturesComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     // Build animations
-    this.shotAnimation = this.buildAnimationPlayer(this.shotRef, todoFeaturesShotAnimation());
+    this.shotAnimation = this.buildAnimationPlayer(this.shotRef, todoRegisterShotAnimation());
     this.playBtnShowAnimation = this.buildAnimationPlayer(this.playBtnRef, playBtnShowAnimation());
     this.playBtnHideAnimation = this.buildAnimationPlayer(this.playBtnRef, playBtnHideAnimation());
 
