@@ -1,1 +1,1 @@
-export { RouteCommunicationService } from './route-communication.service';
+export * from './route';

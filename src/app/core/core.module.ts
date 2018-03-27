@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatTooltipModule } from '@angular/material';
 
-import { RouteCommunicationService } from './services/route-communication.service';
+import { RouteService } from './services';
 import { NavigationComponent } from './components';
 
 @NgModule({
@@ -12,7 +12,7 @@ import { NavigationComponent } from './components';
     RouterModule,
     MatTooltipModule
   ],
-  providers: [RouteCommunicationService],
+  providers: [RouteService],
   declarations: [NavigationComponent],
   exports: [NavigationComponent]
 })

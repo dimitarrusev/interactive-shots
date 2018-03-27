@@ -3,7 +3,7 @@ import { AnimationBuilder, AnimationPlayer, AnimationFactory, AnimationMetadata 
 import { Subscription } from 'rxjs/Subscription';
 import { first } from 'rxjs/operators';
 
-import { RouteCommunicationService } from '../../../core';
+import { RouteService } from '../../../core';
 import { playBtnShowAnimation, playBtnHideAnimation } from '../../shared';
 import { todoFeaturesShotAnimation } from './todo-features.animations';
 
@@ -27,7 +27,7 @@ export class TodoFeaturesComponent implements OnInit, OnDestroy {
 
   constructor(
     private animationBuilder: AnimationBuilder,
-    public routeCommunicationService: RouteCommunicationService
+    public routeService: RouteService
   ) {}
 
   ngOnInit() {
@@ -45,14 +45,14 @@ export class TodoFeaturesComponent implements OnInit, OnDestroy {
     });
 
     // Communicate with parent component via routeCommnivationService
-    this.routeAnimationStateSubscription = this.routeCommunicationService.routeAnimationState$.subscribe(routeAnimationState => {
+    this.routeAnimationStateSubscription = this.routeService.routeAnimationState$.subscribe(routeAnimationState => {
       if (routeAnimationState === 'done') {
         // Animate button
         this.playBtnShowAnimation.play();
 
         // Set initial route state
-        if (!this.routeCommunicationService.getInitialRouteIsInitialized()) {
-          this.routeCommunicationService.setInitialRouteIsInitialized(true);
+        if (!this.routeService.getInitialRouteState()) {
+          this.routeService.setInitialRouteState('rendered');
         }
       }
     });
@@ -60,7 +60,7 @@ export class TodoFeaturesComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.routeAnimationStateSubscription.unsubscribe();
-    this.routeCommunicationService.setRouteAnimationState(null);
+    this.routeService.setRouteAnimationState(null);
   }
 
   private buildAnimationPlayer(
@@ -74,7 +74,7 @@ export class TodoFeaturesComponent implements OnInit, OnDestroy {
     // Toggle size only if the click is inside the shot,
     // but outside the play/replay button.
     if (!this.playBtnRef.nativeElement.contains(evt.target)) {
-      this.routeCommunicationService.toggleShotSize();
+      this.routeService.toggleShotSize();
     }
   }
 

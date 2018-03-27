@@ -3,16 +3,17 @@ import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
-type ShotSize = null | 'oneX' | 'twoX';
-type RouteAnimationState = null | 'start' | 'done';
+export type ShotSize = null | 'oneX' | 'twoX';
+export type InitialRouteState = null | 'rendered';
+export type RouteAnimationState = null | 'start' | 'done';
 
 @Injectable()
-export class RouteCommunicationService {
+export class RouteService {
   private shotSize: BehaviorSubject<ShotSize> = new BehaviorSubject<ShotSize>(null);
   public readonly shotSize$: Observable<ShotSize> = this.shotSize.asObservable();
 
-  private initialRouteIsInitialized: BehaviorSubject<boolean> = new BehaviorSubject(null);
-  public readonly initialRouteIsInitialized$: Observable<boolean> = this.initialRouteIsInitialized.asObservable();
+  private initialRouteState: BehaviorSubject<InitialRouteState> = new BehaviorSubject(null);
+  public readonly initialRouteState$: Observable<InitialRouteState> = this.initialRouteState.asObservable();
 
   private routeAnimationState: Subject<RouteAnimationState> = new Subject();
   public readonly routeAnimationState$: Observable<RouteAnimationState> = this.routeAnimationState.asObservable();
@@ -31,12 +32,12 @@ export class RouteCommunicationService {
       : this.setShotSize('oneX');
   }
 
-  getInitialRouteIsInitialized(): boolean {
-    return this.initialRouteIsInitialized.getValue();
+  getInitialRouteState(): InitialRouteState {
+    return this.initialRouteState.getValue();
   }
 
-  setInitialRouteIsInitialized(initialRouteIsInitialized: boolean) {
-    this.initialRouteIsInitialized.next(initialRouteIsInitialized);
+  setInitialRouteState(initialRouteState: InitialRouteState) {
+    this.initialRouteState.next(initialRouteState);
   }
 
   setRouteAnimationState(routeAnimationState: RouteAnimationState) {

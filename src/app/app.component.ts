@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { first, skipWhile } from 'rxjs/operators';
 
-import { RouteCommunicationService } from './core';
+import { RouteService } from './core';
 
 @Component({
   selector: 'app-root',
@@ -15,20 +15,20 @@ import { RouteCommunicationService } from './core';
 export class AppComponent implements OnInit {
   private spinner: Element = document.getElementById('spinner');
 
-  constructor(private routeCommunicationService: RouteCommunicationService) {}
+  constructor(private routeService: RouteService) {}
 
   ngOnInit() {
     (window.innerWidth < 960)
-      ? this.routeCommunicationService.setShotSize('oneX')
-      : this.routeCommunicationService.setShotSize('twoX');
+      ? this.routeService.setShotSize('oneX')
+      : this.routeService.setShotSize('twoX');
 
-    this.routeCommunicationService.initialRouteIsInitialized$
+    this.routeService.initialRouteState$
       .pipe(
-        skipWhile(initialRouteIsInitialized => !initialRouteIsInitialized),
+        skipWhile(initialRouteState => !initialRouteState),
         first()
       )
-      .subscribe(initialRouteIsInitialized => {
-        if (initialRouteIsInitialized) {
+      .subscribe(initialRouteState => {
+        if (initialRouteState) {
           this.spinner.remove();
         }
       });
