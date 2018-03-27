@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="frame" [ngClass]="{ 'oneX': (routeService.shotSize$ | async) === 'oneX' }">
+  <div class="frame" [ngClass]="{ 'oneX': (shotService.shotSize$ | async) === 'oneX' }">
     <div class="shot" (click)="toggleShotSize($event)" #shotRef>
       <div class="views">
         <img class="default" src="assets/2do/images/terms-of-service/default.png" alt="default">

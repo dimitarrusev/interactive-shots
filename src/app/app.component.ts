@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { first, skipWhile } from 'rxjs/operators';
 
-import { RouteService } from './core';
+import { RouteService, ShotService } from './core';
 
 @Component({
   selector: 'app-root',
@@ -15,12 +15,15 @@ import { RouteService } from './core';
 export class AppComponent implements OnInit {
   private spinner: Element = document.getElementById('spinner');
 
-  constructor(private routeService: RouteService) {}
+  constructor(
+    private routeService: RouteService,
+    private shotService: ShotService
+  ) {}
 
   ngOnInit() {
     (window.innerWidth < 960)
-      ? this.routeService.setShotSize('oneX')
-      : this.routeService.setShotSize('twoX');
+      ? this.shotService.setShotSize('oneX')
+      : this.shotService.setShotSize('twoX');
 
     this.routeService.initialRouteState$
       .pipe(

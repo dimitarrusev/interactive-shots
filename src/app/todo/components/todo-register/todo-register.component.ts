@@ -3,7 +3,7 @@ import { AnimationBuilder, AnimationPlayer, AnimationFactory, AnimationMetadata 
 import { Subscription } from 'rxjs/Subscription';
 import { first } from 'rxjs/operators';
 
-import { RouteService } from '../../../core';
+import { RouteService, ShotService } from '../../../core';
 import { playBtnShowAnimation, playBtnHideAnimation } from '../../shared';
 import { todoRegisterShotAnimation } from './todo-register.animations';
 
@@ -26,8 +26,9 @@ export class TodoRegisterComponent implements OnInit, OnDestroy {
   @ViewChild('playBtnRef', { read: ElementRef }) playBtnRef: ElementRef;
 
   constructor(
+    private animationBuilder: AnimationBuilder,
     public routeService: RouteService,
-    private animationBuilder: AnimationBuilder
+    public shotService: ShotService
   ) {}
 
   ngOnInit() {
@@ -74,7 +75,7 @@ export class TodoRegisterComponent implements OnInit, OnDestroy {
     // Toggle size only if the click is inside the shot,
     // but outside the play/replay button.
     if (!this.playBtnRef.nativeElement.contains(evt.target)) {
-      this.routeService.toggleShotSize();
+      this.shotService.toggleShotSize();
     }
   }
 
