@@ -1,4 +1,17 @@
-import { animate, animateChild, group, query, state, style, stagger, transition, trigger, useAnimation } from '@angular/animations';
+import {
+  animate,
+  animateChild,
+  group,
+  query,
+  state,
+  style,
+  stagger,
+  transition,
+  trigger,
+  useAnimation,
+  AnimationMetadata
+} from '@angular/animations';
+
 import {
   generateSlideAnimation,
   fadeAnimation,
@@ -7,69 +20,65 @@ import {
   standardEasingCurve
 } from '../../../shared/utils/animations';
 
-// Animation parameters
-// slideInAnimation
-const authenticationSlideInAnimationAnimateProperty = 'left';
-const authenticationSlideInAnimation = generateSlideAnimation(authenticationSlideInAnimationAnimateProperty);
-const authenticationSlideInAnimationParams = {
-  from: '800px',
-  to: '122px',
-  duration: '350ms',
-  easing: decelerationEasingCurve
-};
+export const todoDashboardShotAnimation = (): AnimationMetadata[] => {
+  // Parameters
+  const authenticationSlideInAnimationAnimateProperty = 'left';
+  const authenticationSlideInAnimation = generateSlideAnimation(authenticationSlideInAnimationAnimateProperty);
+  const authenticationSlideInAnimationParams = {
+    from: '800px',
+    to: '122px',
+    duration: '350ms',
+    easing: decelerationEasingCurve
+  };
 
-const dashboardSlideInAnimationAnimateProperty = 'left';
-const dashboardSlideInAnimation = generateSlideAnimation(dashboardSlideInAnimationAnimateProperty);
-const dashboardSlideInAnimationParams = {
-  from: '800px',
-  to: '32px',
-  duration: '350ms',
-  easing: decelerationEasingCurve
-};
+  const dashboardSlideInAnimationAnimateProperty = 'left';
+  const dashboardSlideInAnimation = generateSlideAnimation(dashboardSlideInAnimationAnimateProperty);
+  const dashboardSlideInAnimationParams = {
+    from: '800px',
+    to: '32px',
+    duration: '350ms',
+    easing: decelerationEasingCurve
+  };
 
-// slideOutAnimation
-const authenticationSlideOutAnimationAnimateProperty = 'left';
-const authenticationSlideOutAnimation = generateSlideAnimation(authenticationSlideOutAnimationAnimateProperty);
-const authenticationSlideOutAnimationParams = {
-  from: '122px',
-  to: '-800px',
-  duration: '350ms',
-  easing: accelerationEasingCurve
-};
+  const authenticationSlideOutAnimationAnimateProperty = 'left';
+  const authenticationSlideOutAnimation = generateSlideAnimation(authenticationSlideOutAnimationAnimateProperty);
+  const authenticationSlideOutAnimationParams = {
+    from: '122px',
+    to: '-800px',
+    duration: '350ms',
+    easing: accelerationEasingCurve
+  };
 
-const dashboardSlideOutAnimationAnimateProperty = 'left';
-const dashboardSlideOutAnimation = generateSlideAnimation(dashboardSlideOutAnimationAnimateProperty);
-const dashboardSlideOutAnimationParams = {
-  from: '32px',
-  to: '-800px',
-  duration: '350ms',
-  easing: accelerationEasingCurve
-};
+  const dashboardSlideOutAnimationAnimateProperty = 'left';
+  const dashboardSlideOutAnimation = generateSlideAnimation(dashboardSlideOutAnimationAnimateProperty);
+  const dashboardSlideOutAnimationParams = {
+    from: '32px',
+    to: '-800px',
+    duration: '350ms',
+    easing: accelerationEasingCurve
+  };
 
-// fadeOutAnimation
-const fadeOutAnimation = fadeAnimation;
-const fadeOutAnimationParams = {
-  from: 1,
-  to: 0,
-  duration: '350ms',
-  easing: decelerationEasingCurve
-};
+  const fadeOutAnimation = fadeAnimation;
+  const fadeOutAnimationParams = {
+    from: 1,
+    to: 0,
+    duration: '350ms',
+    easing: decelerationEasingCurve
+  };
 
-// Animation delays (in ms)
-const defaultViewFadeOutAnimationDelay = 1500;
-const hoverViewFadeOutAnimationDelay = 2000;
-const slideOutAnimationDelay = 2000;
-const authenticationSlideOutAnimationDelay = 150;
-const dashboardSlideInAnimationDelay = 75;
+  const defaultViewFadeOutAnimationDelay = 1500;
+  const hoverViewFadeOutAnimationDelay = 2000;
+  const slideOutAnimationDelay = 2000;
+  const authenticationSlideOutAnimationDelay = 150;
+  const dashboardSlideInAnimationDelay = 75;
 
-// Animations
-const dashboardQuery = `
-  .views > .dashboard > img.default,
-  .views > .dashboard > img.hover,
-  .views > .dashboard > img.active
-`;
+  // Queries
+  const dashboardQuery = `
+    .views > .dashboard > img.default,
+    .views > .dashboard > img.hover,
+    .views > .dashboard > img.active
+  `;
 
-export const todoDashboardAnimation = () => {
   return [
     group([
       query('.views > .authentication', [
