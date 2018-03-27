@@ -43,6 +43,7 @@ export const routes: Routes = [
       {
         path: 'terms-of-service',
         component: TodoTermsOfServiceComponent,
+        canDeactivate: [DeactivateGuardService],
         data: {
           animation: 'todoTermsOfServiceAnimation'
         }
