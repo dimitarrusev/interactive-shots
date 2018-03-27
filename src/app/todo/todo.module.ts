@@ -5,7 +5,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { MatButtonModule, MatIconModule, MatTooltipModule, MatIconRegistry } from '@angular/material';
 
-import { routes } from './todo.routes';
+import { TodoRoutingModule } from './todo-routing.module';
 import {
   TodoComponent,
   TodoRegisterComponent,
@@ -21,7 +21,7 @@ import {
     CommonModule,
     HttpClientModule,
     MatButtonModule, MatIconModule, MatTooltipModule,
-    RouterModule.forChild(routes)
+    TodoRoutingModule
   ],
   declarations: [
     TodoComponent,

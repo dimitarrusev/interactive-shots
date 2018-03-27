@@ -1,4 +1,5 @@
-import { Routes } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 import { DeactivateGuard } from '../core';
 import {
   TodoComponent,
@@ -10,7 +11,7 @@ import {
   TodoFeaturesComponent
 } from './components';
 
-export const routes: Routes = [
+const routes: Routes = [
   {
     path: '',
     component: TodoComponent,
@@ -67,3 +68,9 @@ export const routes: Routes = [
     ]
   }
 ];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
+export class TodoRoutingModule {}
