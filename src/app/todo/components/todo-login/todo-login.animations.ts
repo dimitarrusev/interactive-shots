@@ -1,4 +1,17 @@
-import { animate, animateChild, group, query, state, style, stagger, transition, trigger, useAnimation } from '@angular/animations';
+import {
+  animate,
+  animateChild,
+  group,
+  query,
+  state,
+  style,
+  stagger,
+  transition,
+  trigger,
+  useAnimation,
+  AnimationMetadata
+} from '@angular/animations';
+
 import {
   generateSlideAnimation,
   generateVaryAnimation,
@@ -8,7 +21,7 @@ import {
   standardEasingCurve
 } from '../../../shared/utils/animations';
 
-export const todoLoginShotAnimation = () => {
+export const todoLoginShotAnimation = (): AnimationMetadata[] => {
   // Parameters
   const slideInAnimationAnimateProperty = 'left';
   const slideInAnimation = generateSlideAnimation(slideInAnimationAnimateProperty);

@@ -74,13 +74,7 @@ export class TodoRegisterComponent implements OnInit, OnDestroy {
     // Toggle size only if the click is inside the shot,
     // but outside the play/replay button.
     if (!this.playBtnRef.nativeElement.contains(evt.target)) {
-      this.routeCommunicationService.shotSize$
-        .pipe(first())
-        .subscribe(shotSize => {
-          (shotSize === 'oneX')
-            ? this.routeCommunicationService.setShotSize('twoX')
-            : this.routeCommunicationService.setShotSize('oneX');
-        })
+      this.routeCommunicationService.toggleShotSize();
     }
   }
 

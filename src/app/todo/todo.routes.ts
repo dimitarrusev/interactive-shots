@@ -35,6 +35,7 @@ export const routes: Routes = [
       {
         path: 'reset-password',
         component: TodoResetPasswordComponent,
+        canDeactivate: [DeactivateGuardService],
         data: {
           animation: 'todoResetPasswordAnimation'
         }
