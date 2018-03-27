@@ -17,8 +17,18 @@ export class RouteCommunicationService {
   private routeAnimationState: Subject<RouteAnimationState> = new Subject();
   public readonly routeAnimationState$: Observable<RouteAnimationState> = this.routeAnimationState.asObservable();
 
+  getShotSize(): ShotSize {
+    return this.shotSize.getValue();
+  }
+
   setShotSize(shotSize: ShotSize) {
     this.shotSize.next(shotSize);
+  }
+
+  toggleShotSize() {
+    (this.getShotSize() === 'oneX')
+      ? this.setShotSize('twoX')
+      : this.setShotSize('oneX');
   }
 
   getInitialRouteIsInitialized(): boolean {

@@ -4,7 +4,8 @@ import { Subscription } from 'rxjs/Subscription';
 import { first } from 'rxjs/operators';
 
 import { RouteCommunicationService } from '../../../core';
-import { todoRegisterShotAnimation, todoRegisterBtnAnimation } from './todo-register.animations';
+import { playBtnShowAnimation, playBtnHideAnimation } from '../../shared';
+import { todoRegisterShotAnimation } from './todo-register.animations';
 
 @Component({
   selector: 'app-todo-register',
@@ -30,6 +31,20 @@ export class TodoRegisterComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
+    // Build animations
+    this.shotAnimation = this.buildAnimationPlayer(this.shotRef, todoRegisterShotAnimation());
+    this.playBtnShowAnimation = this.buildAnimationPlayer(this.playBtnRef, playBtnShowAnimation());
+    this.playBtnHideAnimation = this.buildAnimationPlayer(this.playBtnRef, playBtnHideAnimation());
+
+    // Register callbacks
+    this.shotAnimation.onStart(() => this.playBtnState = 'disabled');
+    this.shotAnimation.onDone(() => {
+      this.playBtnState = 'enabled';
+      this.playBtnIcon = 'replay';
+      this.playBtnTooltipText = 'replay';
+    });
+
+    // Communicate with parent component via routeCommnivationService
     this.routeAnimationStateSubscription = this.routeCommunicationService.routeAnimationState$.subscribe(routeAnimationState => {
       if (routeAnimationState === 'done') {
         // Animate button
@@ -41,23 +56,6 @@ export class TodoRegisterComponent implements OnInit, OnDestroy {
         }
       }
     });
-
-    // Create shot animation player
-    this.shotAnimation = this.buildAnimationPlayer(this.shotRef, todoRegisterShotAnimation());
-
-    this.shotAnimation.onStart(() => {
-      this.playBtnState = 'disabled';
-    });
-
-    this.shotAnimation.onDone(() => {
-      this.playBtnState = 'enabled';
-      this.playBtnIcon = 'replay';
-      this.playBtnTooltipText = 'replay';
-    });
-
-    // Create btn animation player
-    this.playBtnShowAnimation = this.buildAnimationPlayer(this.playBtnRef, todoRegisterBtnAnimation('show'));
-    this.playBtnHideAnimation = this.buildAnimationPlayer(this.playBtnRef, todoRegisterBtnAnimation('hide'));
   }
 
   ngOnDestroy() {

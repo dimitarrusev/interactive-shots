@@ -27,6 +27,7 @@ export const routes: Routes = [
       {
         path: 'login',
         component: TodoLoginComponent,
+        canDeactivate: [DeactivateGuardService],
         data: {
           animation: 'todoLoginAnimation'
         }

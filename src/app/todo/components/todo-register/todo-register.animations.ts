@@ -16,11 +16,9 @@ import {
   generateSlideAnimation,
   generateVaryAnimation,
   fadeAnimation,
-  fadeScaleAnimation,
   decelerationEasingCurve,
   accelerationEasingCurve,
-  standardEasingCurve,
-  sharpEasingCurve
+  standardEasingCurve
 } from '../../../shared/utils/animations';
 
 export const todoRegisterShotAnimation = (): AnimationMetadata[] => {
@@ -106,31 +104,4 @@ export const todoRegisterShotAnimation = (): AnimationMetadata[] => {
       ])
     ], { delay: viewsContainerSlideOutAnimationDelay })
   ];
-};
-
-export const todoRegisterBtnAnimation = (opts: 'show' | 'hide'): AnimationMetadata => {
-  // Parameters
-  const fadeInScaleAnimation = fadeScaleAnimation;
-  const fadeInScaleAnimationParams = {
-    fadeFrom: 0,
-    fadeTo: 1,
-    scaleFrom: 0,
-    scaleTo: 1,
-    duration: '150ms',
-    easing: sharpEasingCurve
-  };
-
-  const fadeOutScaleAnimation = fadeScaleAnimation;
-  const fadeOutScaleAnimationParams = {
-    fadeFrom: 1,
-    fadeTo: 0,
-    scaleFrom: 1,
-    scaleTo: 0,
-    duration: '150ms',
-    easing: sharpEasingCurve
-  };
-
-  return (opts === 'show')
-    ? useAnimation(fadeInScaleAnimation, { params: fadeInScaleAnimationParams })
-    : useAnimation(fadeOutScaleAnimation, { params: fadeOutScaleAnimationParams });
 };
