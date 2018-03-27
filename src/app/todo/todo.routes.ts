@@ -59,6 +59,7 @@ export const routes: Routes = [
       {
         path: 'dashboard-v2',
         component: TodoDashboardV2Component,
+        canDeactivate: [DeactivateGuardService],
         data: {
           animation: 'todoDashboardV2Animation'
         }

@@ -1,4 +1,17 @@
-import { animate, animateChild, group, query, state, style, stagger, transition, trigger, useAnimation } from '@angular/animations';
+import {
+  animate,
+  animateChild,
+  group,
+  query,
+  state,
+  style,
+  stagger,
+  transition,
+  trigger,
+  useAnimation,
+  AnimationMetadata
+} from '@angular/animations';
+
 import {
   generateSlideAnimation,
   fadeAnimation,
@@ -7,56 +20,53 @@ import {
   standardEasingCurve
 } from '../../../shared/utils/animations';
 
-// Animation parameters
-// slideInAnimation
-const slideInAnimationAnimateProperty = 'left';
-const slideInAnimation = generateSlideAnimation(slideInAnimationAnimateProperty);
-const slideInAnimationParams = {
-  from: '800px',
-  to: '41px',
-  duration: '350ms',
-  easing: decelerationEasingCurve
-};
+export const todoDashboardV2ShotAnimation = (): AnimationMetadata[] => {
+  // Parameters
+  const slideInAnimationAnimateProperty = 'left';
+  const slideInAnimation = generateSlideAnimation(slideInAnimationAnimateProperty);
+  const slideInAnimationParams = {
+    from: '800px',
+    to: '41px',
+    duration: '350ms',
+    easing: decelerationEasingCurve
+  };
 
-// slideOutAnimation
-const slideOutAnimationAnimateProperty = 'left';
-const slideOutAnimation = generateSlideAnimation(slideOutAnimationAnimateProperty);
-const slideOutAnimationParams = {
-  from: '41px',
-  to: '-800px',
-  duration: '350ms',
-  easing: accelerationEasingCurve
-};
+  const slideOutAnimationAnimateProperty = 'left';
+  const slideOutAnimation = generateSlideAnimation(slideOutAnimationAnimateProperty);
+  const slideOutAnimationParams = {
+    from: '41px',
+    to: '-800px',
+    duration: '350ms',
+    easing: accelerationEasingCurve
+  };
 
-// fadeOutAnimation
-const fadeOutAnimation = fadeAnimation;
-const fadeOutAnimationParams = {
-  from: 1,
-  to: 0,
-  duration: '350ms',
-  easing: decelerationEasingCurve
-};
+  const fadeOutAnimation = fadeAnimation;
+  const fadeOutAnimationParams = {
+    from: 1,
+    to: 0,
+    duration: '350ms',
+    easing: decelerationEasingCurve
+  };
 
-// Animation delays (in ms)
-const defaultViewFadeOutAnimationDelay = 1500;
-const hoverViewFadeOutAnimationDelay = 2000;
-const viewsContainerSlideOutAnimationDelay = 2000;
+  // Delays (in ms)
+  const defaultViewFadeOutAnimationDelay = 1500;
+  const hoverViewFadeOutAnimationDelay = 2000;
+  const viewsContainerSlideOutAnimationDelay = 2000;
 
-// Animations
-const viewsQuery = `
-  .views > img.default,
-  .views > img.hover,
-  .views > img.active,
-  .views > img.active-to-default,
-  .views > img.search-settings,
-  .views > img.search-results-default,
-  .views > img.search-results-hover,
-  .views > img.search-results-hover-to-default,
-  .views > img.tags-default,
-  .views > img.tags-hover
-`;
+  // Queries
+  const viewsQuery = `
+    .views > img.default,
+    .views > img.hover,
+    .views > img.active,
+    .views > img.active-to-default,
+    .views > img.search-settings,
+    .views > img.search-results-default,
+    .views > img.search-results-hover,
+    .views > img.search-results-hover-to-default,
+    .views > img.tags-default,
+    .views > img.tags-hover
+  `;
 
-export const todoDashboardV2Animation = () => {
   return [
     group([
       query('.views', [
