@@ -4,15 +4,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { CoreModule } from './core';
 
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { routes } from './app.routes';
 
 @NgModule({
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     CoreModule,
-    RouterModule.forRoot(routes)
+    AppRoutingModule
   ],
   declarations: [
     AppComponent
