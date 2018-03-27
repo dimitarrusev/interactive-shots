@@ -7,7 +7,7 @@ import {
   TodoResetPasswordComponent,
   TodoTermsOfServiceComponent,
   TodoDashboardComponent,
-  TodoDashboardV2Component
+  TodoFeaturesComponent
 } from './components';
 
 export const routes: Routes = [
@@ -57,11 +57,11 @@ export const routes: Routes = [
         }
       },
       {
-        path: 'dashboard-v2',
-        component: TodoDashboardV2Component,
+        path: 'features',
+        component: TodoFeaturesComponent,
         canDeactivate: [DeactivateGuardService],
         data: {
-          animation: 'todoDashboardV2Animation'
+          animation: 'todoFeaturesAnimation'
         }
       }
     ]

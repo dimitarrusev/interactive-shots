@@ -9,10 +9,10 @@ import { routes } from './app.routes';
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes),
     BrowserModule,
     BrowserAnimationsModule,
-    CoreModule
+    CoreModule,
+    RouterModule.forRoot(routes)
   ],
   declarations: [
     AppComponent

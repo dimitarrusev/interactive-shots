@@ -14,7 +14,7 @@ import {
   TodoResetPasswordComponent,
   TodoTermsOfServiceComponent,
   TodoDashboardComponent,
-  TodoDashboardV2Component
+  TodoFeaturesComponent
 } from './components';
 
 @NgModule({
@@ -31,7 +31,7 @@ import {
     TodoResetPasswordComponent,
     TodoTermsOfServiceComponent,
     TodoDashboardComponent,
-    TodoDashboardV2Component
+    TodoFeaturesComponent
   ],
   providers: [
     DeactivateGuardService
