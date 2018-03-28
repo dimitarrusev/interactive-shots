@@ -1,0 +1,10 @@
+<ul class="navigation">
+  <app-navigation-item *ngFor="let navigationItem of navigationItems; let index = index;"
+    [id]="index"
+    [selected]="navigationItem.selected"
+    [link]="navigationItem.link"
+    [tooltipText]="navigationItem.tooltipText"
+    [tooltipPosition]="navigationItem.tooltipPosition"
+    (select)="selectItem($event)">
+  </app-navigation-item>
+</ul>

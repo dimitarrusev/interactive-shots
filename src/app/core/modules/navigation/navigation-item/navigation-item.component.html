@@ -1,0 +1,8 @@
+<li>
+  <a [ngClass]="{ 'active': selected }"
+     [routerLink]="link"
+     [matTooltip]="tooltipText"
+     [matTooltipPosition]="tooltipPosition"
+     (click)="select.emit({ index: id })">
+  </a>
+</li>

@@ -16,7 +16,7 @@
               [matTooltip]="playBtnTooltipText"
               [matTooltipPosition]="playBtnTooltipPosition"
               [disabled]="(playBtnState === 'enabled') ? false : true"
-              (click)="shotAnimationState ? shotAnimation.restart() : shotAnimation.play()"
+              (click)="shotAnimation.play()"
               #playBtnRef>
         <mat-icon [svgIcon]="playBtnIcon"></mat-icon>
       </button>

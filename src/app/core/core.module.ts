@@ -1,21 +1,25 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { MatTooltipModule } from '@angular/material';
 
-import { DeactivateGuard } from './guards';
+import { NavigationModule } from './modules';
 import { RouteService, ShotService } from './services';
-import { NavigationComponent } from './components';
+import { DeactivateGuard } from './guards';
+
+export * from './modules';
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule,
-    MatTooltipModule
+    NavigationModule
   ],
-  providers: [RouteService, ShotService, DeactivateGuard],
-  declarations: [NavigationComponent],
-  exports: [NavigationComponent]
+  providers: [
+    RouteService,
+    ShotService,
+    DeactivateGuard
+  ],
+  exports: [
+    NavigationModule
+  ]
 })
 export class CoreModule {
   constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
