@@ -2,7 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { first, skipWhile } from 'rxjs/operators';
 
-import { RouteService, ShotService, NavigationItem } from './core';
+import {
+  WindowService,
+  RouteService,
+  ShotService,
+  NavigationItem
+} from './core';
 
 @Component({
   selector: 'app-root',
@@ -25,12 +30,13 @@ export class AppComponent implements OnInit {
   ];
 
   constructor(
+    private windowService: WindowService,
     private routeService: RouteService,
     private shotService: ShotService
   ) {}
 
   ngOnInit() {
-    (window.innerWidth < 960)
+    (this.windowService.nativeWindow.innerWidth < 960)
       ? this.shotService.setShotSize('oneX')
       : this.shotService.setShotSize('twoX');
 

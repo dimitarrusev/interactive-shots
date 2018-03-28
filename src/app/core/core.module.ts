@@ -2,7 +2,7 @@ import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { NavigationModule } from './modules';
-import { RouteService, ShotService } from './services';
+import { WindowService, RouteService, ShotService } from './services';
 import { DeactivateGuard } from './guards';
 
 export * from './modules';
@@ -13,6 +13,7 @@ export * from './modules';
     NavigationModule
   ],
   providers: [
+    WindowService,
     RouteService,
     ShotService,
     DeactivateGuard
